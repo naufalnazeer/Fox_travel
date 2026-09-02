@@ -10,20 +10,24 @@ import reviewRoute from "./routes/reviews.js";
 import bookingRoute from "./routes/bookings.js";
 
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: process.env.CLIENT_ORIGIN || "http://localhost:3000",
   credentials: true,
 };
 
-// MongoDB connection (Compass/localhost)
-const mongoURL = "mongodb://localhost:27017/tour-booking";
+// MongoDB connection (falls back to local Compass/localhost for dev)
+const mongoURL = process.env.MONGO_URI || "mongodb://localhost:27017/tour-booking";
 
-mongoose.connect(mongoURL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose
+  .connect(mongoURL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .catch((err) => {
+    console.log("MongoDB connection failed", err.message);
+  });
 
 const connection = mongoose.connection;
 
