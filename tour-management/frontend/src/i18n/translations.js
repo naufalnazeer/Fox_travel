@@ -15,7 +15,7 @@ const translations = {
       headingPrefix: "Comfortable journeys for every",
       headingHighlight: "occasion",
       description:
-        "TravelSolutions is a bus & minibus travel provider based in Elavaramkuzhi, Velakupara, Anchal — organizing safe, comfortable transport for weddings, school & college trips, pilgrimages, and community tours.",
+        "TravelSolutions is a travel company based in Elavaramkuzhi, Velakkupara, Anchal — bus & minibus transport for weddings, school & college trips, pilgrimages, and community tours, plus holiday tour packages, flight tickets, and hotel bookings.",
       description2:
         "Tell us where you're headed and how many seats you need — we'll take care of the rest.",
       ctaQuote: "Get a Quote",
@@ -48,6 +48,11 @@ const translations = {
       kicker: "Gallery",
       title: "Our fleet in action",
     },
+    destinations: {
+      kicker: "Tour Packages",
+      title: "Popular Kerala Destinations",
+      enquire: "Enquire",
+    },
     cta: {
       title: "Planning a trip?",
       description: "Get an instant quote on WhatsApp or give us a call — we're happy to help.",
@@ -74,7 +79,7 @@ const translations = {
     },
     footer: {
       description:
-        "TravelSolutions is a bus & minibus travel provider based in Elavaramkuzhi, Velakupara, Anchal — serving weddings, school trips, and community tours across the region.",
+        "TravelSolutions is a travel company based in Elavaramkuzhi, Velakkupara, Anchal — bus & minibus hire, tour packages, flight tickets, and hotel bookings across the region.",
       quickLinks: "Quick Links",
       ourServices: "Our Services",
       contact: "Contact",
@@ -83,6 +88,7 @@ const translations = {
     whatsapp: {
       default: "Hi TravelSolutions, I'd like to enquire about a bus booking.",
       vehicle: (name, seats) => `Hi TravelSolutions, I'd like to enquire about the ${name} (${seats}).`,
+      destination: (name) => `Hi TravelSolutions, I'd like to enquire about a tour package to ${name}.`,
     },
   },
   ml: {
@@ -98,7 +104,7 @@ const translations = {
       headingPrefix: "എല്ലാ അവസരങ്ങൾക്കും",
       headingHighlight: "സുഖകരമായ യാത്രകൾ",
       description:
-        "Elavaramkuzhi, Velakupara, അഞ്ചൽ ആസ്ഥാനമായി പ്രവർത്തിക്കുന്ന ബസ് & മിനി ബസ് സർവീസാണ് TravelSolutions — വിവാഹങ്ങൾ, സ്കൂൾ & കോളേജ് യാത്രകൾ, തീർത്ഥാടനങ്ങൾ, സാമൂഹിക ടൂറുകൾ എന്നിവയ്ക്കായി സുരക്ഷിതവും സുഖകരവുമായ യാത്രാസൗകര്യം ഞങ്ങൾ ഒരുക്കുന്നു.",
+        "Elavaramkuzhi, Velakkupara, അഞ്ചൽ ആസ്ഥാനമായി പ്രവർത്തിക്കുന്ന ഒരു യാത്രാ സ്ഥാപനമാണ് TravelSolutions — വിവാഹങ്ങൾ, സ്കൂൾ & കോളേജ് യാത്രകൾ, തീർത്ഥാടനങ്ങൾ, സാമൂഹിക ടൂറുകൾ എന്നിവയ്ക്കുള്ള ബസ് & മിനി ബസ് സർവീസിനൊപ്പം ഹോളിഡേ ടൂർ പാക്കേജുകളും ഫ്ലൈറ്റ് ടിക്കറ്റും ഹോട്ടൽ ബുക്കിംഗും ഞങ്ങൾ ഒരുക്കുന്നു.",
       description2:
         "നിങ്ങൾ എവിടേക്കാണ് പോകേണ്ടതെന്നും എത്ര സീറ്റ് വേണമെന്നും പറഞ്ഞാൽ മതി — ബാക്കിയെല്ലാം ഞങ്ങൾ നോക്കിക്കൊള്ളാം.",
       ctaQuote: "ക്വോട്ട് ചോദിക്കൂ",
@@ -131,6 +137,11 @@ const translations = {
       kicker: "ഗാലറി",
       title: "ഞങ്ങളുടെ വാഹനവ്യൂഹം പ്രവർത്തനത്തിൽ",
     },
+    destinations: {
+      kicker: "ടൂർ പാക്കേജുകൾ",
+      title: "ജനപ്രിയ കേരള ലക്ഷ്യസ്ഥാനങ്ങൾ",
+      enquire: "അന്വേഷിക്കൂ",
+    },
     cta: {
       title: "യാത്ര പ്ലാൻ ചെയ്യുകയാണോ?",
       description: "വാട്ട്സ്ആപ്പിൽ ഉടൻ ക്വോട്ട് വാങ്ങൂ അല്ലെങ്കിൽ ഞങ്ങളെ വിളിക്കൂ — സഹായിക്കാൻ സന്തോഷമുണ്ട്.",
@@ -157,7 +168,7 @@ const translations = {
     },
     footer: {
       description:
-        "Elavaramkuzhi, Velakupara, അഞ്ചൽ ആസ്ഥാനമായി പ്രവർത്തിക്കുന്ന ബസ് & മിനി ബസ് യാത്രാ സേവനമാണ് TravelSolutions — വിവാഹങ്ങൾ, സ്കൂൾ യാത്രകൾ, സാമൂഹിക ടൂറുകൾ എന്നിവയ്ക്കായി ഈ പ്രദേശത്തുടനീളം സേവനം നൽകുന്നു.",
+        "Elavaramkuzhi, Velakkupara, അഞ്ചൽ ആസ്ഥാനമായി പ്രവർത്തിക്കുന്ന ഒരു യാത്രാ സ്ഥാപനമാണ് TravelSolutions — ബസ് & മിനി ബസ് വാടക, ടൂർ പാക്കേജുകൾ, ഫ്ലൈറ്റ് ടിക്കറ്റ്, ഹോട്ടൽ ബുക്കിംഗ് എന്നിവ ഈ പ്രദേശത്തുടനീളം നൽകുന്നു.",
       quickLinks: "ക്വിക്ക് ലിങ്കുകൾ",
       ourServices: "ഞങ്ങളുടെ സേവനങ്ങൾ",
       contact: "ബന്ധപ്പെടാൻ",
@@ -166,6 +177,7 @@ const translations = {
     whatsapp: {
       default: "ഹായ് TravelSolutions, ഒരു ബസ് ബുക്കിംഗ് സംബന്ധിച്ച് അന്വേഷിക്കാൻ ആഗ്രഹിക്കുന്നു.",
       vehicle: (name, seats) => `ഹായ് TravelSolutions, ${name} (${seats}) സംബന്ധിച്ച് അന്വേഷിക്കാൻ ആഗ്രഹിക്കുന്നു.`,
+      destination: (name) => `ഹായ് TravelSolutions, ${name}-ലേക്കുള്ള ഒരു ടൂർ പാക്കേജ് സംബന്ധിച്ച് അന്വേഷിക്കാൻ ആഗ്രഹിക്കുന്നു.`,
     },
   },
 };

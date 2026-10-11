@@ -18,7 +18,7 @@ const Contact = () => {
       <section>
         <Container>
           <Row>
-            <Col lg="5" md="6" className="mb-4">
+            <Col lg="5" md="6" className="mb-4" data-aos="fade-right">
               <h4>{t.contactPage.getInTouch}</h4>
               <p className="fleet__note">{t.contactPage.description}</p>
 
@@ -67,7 +67,7 @@ const Contact = () => {
               </div>
             </Col>
 
-            <Col lg="7" md="6">
+            <Col lg="7" md="6" data-aos="fade-left">
               <div className="contact__map">
                 <iframe
                   title="TravelSolutions location"

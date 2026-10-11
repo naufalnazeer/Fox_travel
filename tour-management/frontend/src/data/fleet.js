@@ -1,6 +1,6 @@
 import miniBusImg from "../assest/images/travelfox/fleet-minibus.jpg";
-import busImg from "../assest/images/travelfox/fleet-bus.jpg";
-import largeBusImg from "../assest/images/travelfox/fleet-large-bus.jpg";
+import busImg from "../assest/images/travelfox/india-bus-jyoti-travels.jpg";
+import largeBusImg from "../assest/images/travelfox/india-bus-orange-state.jpg";
 
 // Starting prices are approximate placeholders — update with TravelSolutions's real rates.
 const fleetData = [

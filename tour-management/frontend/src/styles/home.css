@@ -160,6 +160,59 @@
   margin-top: 1rem;
 }
 
+.destination__card {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 30px -10px;
+  background: #fff;
+  height: 100%;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.destination__card:hover {
+  transform: translateY(-6px);
+  box-shadow: rgba(0, 0, 0, 0.22) 0px 16px 34px -10px;
+}
+
+.destination__img img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.destination__body {
+  padding: 1.5rem;
+}
+
+.destination__body h4 {
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.destination__body p {
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+/* Gentle lift/scale animations for interactive elements across the site. */
+.service__item,
+.fleet__card .card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service__item:hover,
+.fleet__card .card:hover {
+  transform: translateY(-6px);
+}
+
+.btn {
+  transition: transform 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
 @media only screen and (max-width: 992px) {
   .hero_content h1 {
     font-size: 2.7rem;
@@ -230,5 +283,9 @@
   .cta__band button {
     width: 100%;
     justify-content: center;
+  }
+
+  .destination__img img {
+    height: 200px;
   }
 }

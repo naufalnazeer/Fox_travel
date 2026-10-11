@@ -20,15 +20,23 @@ const Fleet = () => {
             <Col lg="12" className="mb-4">
               <p className="fleet__note">{t.fleetPage.note}</p>
             </Col>
-            {fleetData.map((vehicle) => (
-              <Col lg="4" md="6" sm="12" className="mb-4" key={vehicle.id}>
+            {fleetData.map((vehicle, index) => (
+              <Col
+                lg="4"
+                md="6"
+                sm="12"
+                className="mb-4"
+                key={vehicle.id}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+              >
                 <FleetCard vehicle={vehicle} />
               </Col>
             ))}
           </Row>
 
           <Row className="mt-4">
-            <Col lg="12" className="text-center">
+            <Col lg="12" className="text-center" data-aos="fade-up">
               <h4>{t.fleetPage.notSureTitle}</h4>
               <p>{t.fleetPage.notSureDesc}</p>
               <a href={whatsappLink(t.whatsapp.default)} target="_blank" rel="noreferrer">

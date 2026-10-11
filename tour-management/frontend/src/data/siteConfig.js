@@ -8,7 +8,7 @@ const siteConfig = {
   whatsappNumber: "918138063306", // digits only, country code first, used for wa.me links
   email: "info@travelsolutions.example",
   address: {
-    line1: "Elavaramkuzhi, Velakupara",
+    line1: "Elavaramkuzhi, Velakkupara",
     line2: "Anchal, Kollam, Kerala",
   },
   social: {

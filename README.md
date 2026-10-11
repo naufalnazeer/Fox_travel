@@ -1,7 +1,7 @@
 # TravelSolutions
 
 A static website for **TravelSolutions**, a bus & minibus travel provider based in
-Elavaramkuzhi, Velakupara, Anchal — serving weddings, school & college trips,
+Elavaramkuzhi, Velakkupara, Anchal — serving weddings, school & college trips,
 pilgrimages, and community tours.
 
 This is a plain React (Create React App) site. There is no backend or

@@ -15,10 +15,10 @@ const Gallery = () => {
       <section>
         <Container>
           <Row>
-            <Col lg="12" className="mb-4">
+            <Col lg="12" className="mb-4" data-aos="fade-up">
               <p className="fleet__note">{t.galleryPage.note}</p>
             </Col>
-            <Col lg="12">
+            <Col lg="12" data-aos="fade-up">
               <MasonryImageGallery />
             </Col>
           </Row>

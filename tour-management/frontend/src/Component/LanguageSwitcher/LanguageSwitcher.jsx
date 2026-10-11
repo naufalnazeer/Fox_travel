@@ -19,7 +19,7 @@ const LanguageSwitcher = () => {
         className={lang === "ml" ? "active" : ""}
         onClick={() => setLang("ml")}
       >
-        മലയാളം
+        മല
       </button>
     </div>
   );

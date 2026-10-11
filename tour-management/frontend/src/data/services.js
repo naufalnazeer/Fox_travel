@@ -31,6 +31,22 @@ const servicesData = [
       ml: "പരിചയസമ്പന്നരായ ലോക്കൽ ഡ്രൈവർമാരോടൊപ്പം ഡേ ട്രിപ്പുകൾ, മൾട്ടി-ഡേ ടൂറുകൾ, ഔട്ട്സ്റ്റേഷൻ യാത്രകൾ.",
     },
   },
+  {
+    icon: "ri-suitcase-3-line",
+    title: { en: "Holiday Tour Packages", ml: "ഹോളിഡേ ടൂർ പാക്കേജുകൾ" },
+    desc: {
+      en: "Customized holiday packages to Munnar, Alappuzha, and other Kerala destinations — transport, stay, and sightseeing arranged for you.",
+      ml: "മൂന്നാർ, ആലപ്പുഴ തുടങ്ങിയ കേരള ലക്ഷ്യസ്ഥാനങ്ങളിലേക്കുള്ള ഇഷ്ടാനുസൃത ഹോളിഡേ പാക്കേജുകൾ — യാത്ര, താമസം, കാഴ്ചകൾ എല്ലാം ഞങ്ങൾ ക്രമീകരിക്കും.",
+    },
+  },
+  {
+    icon: "ri-flight-takeoff-line",
+    title: { en: "Flight & Hotel Booking", ml: "ഫ്ലൈറ്റ് & ഹോട്ടൽ ബുക്കിംഗ്" },
+    desc: {
+      en: "Need flight tickets or a hotel stay too? Enquire with our team directly and we'll arrange it for you.",
+      ml: "ഫ്ലൈറ്റ് ടിക്കറ്റോ ഹോട്ടൽ താമസമോ വേണോ? ഞങ്ങളുടെ ടീമിനോട് നേരിട്ട് അന്വേഷിക്കൂ — ഞങ്ങൾ ക്രമീകരിച്ചു തരാം.",
+    },
+  },
 ];
 
 export default servicesData;
