@@ -27,6 +27,7 @@
 
 .contact__info li a {
   color: var(--text-color);
+  text-decoration: none;
 }
 
 .contact__btns button {
@@ -38,6 +39,7 @@
 .social__links a {
   font-size: 1.4rem;
   color: var(--heading-color);
+  text-decoration: none;
 }
 
 .contact__map iframe {

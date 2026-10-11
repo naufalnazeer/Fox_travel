@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "reactstrap";
 
 import CommonSection from "../Shared/CommonSection";
-import MasonryImageGallery from "../Component/image-gallery/MasonryImageGallery";
+import ImageCarousel from "../Component/image-gallery/ImageCarousel";
 import "../styles/contact.css";
 import { useLanguage } from "../i18n/LanguageContext";
 
@@ -19,7 +19,7 @@ const Gallery = () => {
               <p className="fleet__note">{t.galleryPage.note}</p>
             </Col>
             <Col lg="12" data-aos="fade-up">
-              <MasonryImageGallery />
+              <ImageCarousel />
             </Col>
           </Row>
         </Container>

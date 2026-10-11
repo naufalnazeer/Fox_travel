@@ -20,7 +20,9 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="footer">
+    <>
+      <div className="kerala-divider"></div>
+      <footer className="footer">
       <Container>
         <Row>
           <Col lg="4" md="6">
@@ -115,7 +117,8 @@ const Footer = () => {
           </Col>
         </Row>
       </Container>
-    </footer>
+      </footer>
+    </>
   );
 };
 export default Footer;

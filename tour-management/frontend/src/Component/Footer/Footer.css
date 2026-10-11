@@ -1,41 +1,96 @@
-.footer{
-    padding-top: 70px;
+.footer {
+    background: var(--heading-color);
+    padding-top: 60px;
     padding-bottom: 30px;
-
-}
-
-.footer__logo-text {
-    color: var(--heading-color);
-    margin-bottom: 1rem;
-}
-
-.footer__logo-text i {
-    color: var(--secondary-color);
 }
 
 .footer__brand p {
-    color: var(--text-color);
+    color: #b9c4c2;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.footer__logo-text {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.footer__logo-text i {
+    color: var(--kerala-gold-light);
 }
 
 .social__links span a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
     text-decoration: none;
-    color: var(--heading-color);
-    font-size: 1.2rem;
+    color: #fff;
+    font-size: 1.1rem;
+    transition: background 0.25s, border-color 0.25s, transform 0.25s;
 }
 
-.footer__link-title{
-    color: var(--heading-color);
-    margin-bottom: 1rem;
+.social__links span a:hover {
+    background: var(--gradient-gold);
+    border-color: transparent;
+    transform: translateY(-3px);
+}
+
+.footer__link-title {
+    color: #fff;
+    margin-bottom: 1.3rem;
+    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 0.7rem;
+}
+
+.footer__link-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 36px;
+    height: 3px;
+    border-radius: 3px;
+    background: var(--gradient-gold);
+}
+
+.footer__quick-links li {
+    background: transparent !important;
+}
+
+.footer__quick-links li a,
+.footer__quick-links li {
+    text-decoration: none;
+    color: #b9c4c2;
+    font-size: 0.98rem;
 }
 
 .footer__quick-links li a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-size: 1.1rem;
+    transition: color 0.2s, padding-left 0.2s;
 }
 
-.copyright{
-    color: var(--text-color);
-    font-size: 1rem;
-    
+.footer__quick-links li a:hover {
+    color: var(--kerala-gold-light);
+    padding-left: 4px;
+}
+
+.footer__quick-links li i {
+    color: var(--kerala-gold-light);
+}
+
+.footer__quick-links li p {
+    color: #b9c4c2;
+}
+
+.copyright {
+    color: #8a9794;
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 1.5rem;
+    margin-top: 1rem;
 }

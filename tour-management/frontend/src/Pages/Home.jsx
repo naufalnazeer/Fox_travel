@@ -9,7 +9,7 @@ import kathakaliDancer from "../assest/images/travelfox/kathakali-dancer.jpg";
 import elephantProcession from "../assest/images/travelfox/elephant-procession.jpg";
 import Subtitle from "../Shared/Subtitle";
 import ServiceList from "../services/ServiceList";
-import MasonryImageGallery from "../Component/image-gallery/MasonryImageGallery";
+import ImageCarousel from "../Component/image-gallery/ImageCarousel";
 import FleetCard from "../Component/Fleet/FleetCard";
 import fleetData from "../data/fleet";
 import destinationsData from "../data/destinations";
@@ -220,7 +220,7 @@ const Home = () => {
               <h2 className="gallery__title">{t.gallerySection.title}</h2>
             </Col>
             <Col lg="12">
-              <MasonryImageGallery />
+              <ImageCarousel />
             </Col>
           </Row>
         </Container>

@@ -132,14 +132,6 @@
   margin-top: 1rem;
 }
 
-.masonry__img {
-  transition: 0.3s;
-}
-
-.masonry__img:hover {
-  transform: scale(1.1);
-}
-
 .destination__card {
   border-radius: 14px;
   overflow: hidden;
