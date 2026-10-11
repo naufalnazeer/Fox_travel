@@ -5,6 +5,8 @@ import "../styles/home.css";
 import { Container, Row, Col } from "reactstrap";
 import keralaKsrtcBus from "../assest/images/travelfox/kerala-ksrtc-bus.jpg";
 import alleppeyHouseboat from "../assest/images/travelfox/alleppey-houseboat.jpg";
+import kathakaliDancer from "../assest/images/travelfox/kathakali-dancer.jpg";
+import elephantProcession from "../assest/images/travelfox/elephant-procession.jpg";
 import Subtitle from "../Shared/Subtitle";
 import ServiceList from "../services/ServiceList";
 import MasonryImageGallery from "../Component/image-gallery/MasonryImageGallery";
@@ -152,6 +154,36 @@ const Home = () => {
           </Row>
         </Container>
       </section>
+
+      <div className="kerala-divider"></div>
+
+      <section className="culture__section">
+        <div
+          className="culture__bg bg1"
+          style={{ backgroundImage: `url(${kathakaliDancer})` }}
+        ></div>
+        <div
+          className="culture__bg bg2"
+          style={{ backgroundImage: `url(${elephantProcession})` }}
+        ></div>
+        <div className="culture__overlay"></div>
+        <Container>
+          <Row>
+            <Col lg="8" className="mx-auto culture__content" data-aos="zoom-in">
+              <Subtitle Subtitle={t.culture.kicker} />
+              <h2>{t.culture.title}</h2>
+              <p>{t.culture.description}</p>
+              <a href={whatsappLink(t.whatsapp.culture)} target="_blank" rel="noreferrer">
+                <button className="btn primary__btn">
+                  <i className="ri-whatsapp-line"></i> {t.culture.cta}
+                </button>
+              </a>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      <div className="kerala-divider"></div>
 
       <section>
         <Container>

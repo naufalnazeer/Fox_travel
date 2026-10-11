@@ -12,7 +12,12 @@
 }
 
 .hero_content h1 .highlight {
-  color: var(--secondary-color);
+  background: var(--gradient-festive);
+  background-size: 200% 200%;
+  animation: gradientFlow 6s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero_content p {
@@ -62,7 +67,9 @@
 }
 
 .cta__band {
-  background: var(--heading-color);
+  background: var(--gradient-festive);
+  background-size: 200% 200%;
+  animation: gradientFlow 10s ease infinite;
 }
 
 .cta__band h2 {
@@ -87,8 +94,14 @@
 .services__subtitle {
   font-size: 2.2rem;
   font-weight: 500;
-  color: #ee6e6e;
   font-family: var(--subtitle-font-name);
+  background: var(--gradient-festive);
+  background-size: 200% 200%;
+  animation: gradientFlow 6s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: max-content;
 }
 
 .services__title {
@@ -211,6 +224,105 @@
 
 .btn:hover {
   transform: translateY(-2px);
+}
+
+/* Culture section: crossfading Kathakali / elephant-procession background with a
+   festive gradient overlay, used to showcase Kerala's culture beyond transport. */
+.culture__section {
+  position: relative;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 0;
+}
+
+.culture__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  will-change: opacity, transform;
+}
+
+.culture__bg.bg1 {
+  animation: cultureFade1 16s ease-in-out infinite, kenBurns 24s ease-in-out infinite;
+}
+
+.culture__bg.bg2 {
+  animation: cultureFade2 16s ease-in-out infinite, kenBurns 28s ease-in-out infinite reverse;
+}
+
+@keyframes cultureFade1 {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes cultureFade2 {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes kenBurns {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.culture__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(65, 10, 22, 0.88) 0%, rgba(15, 92, 60, 0.6) 100%);
+}
+
+.culture__content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  text-align: center;
+  padding: 4rem 1rem;
+  width: 100%;
+}
+
+.culture__content .section__subtitle {
+  margin: 0 auto 1rem;
+}
+
+.culture__content h2 {
+  color: #fff;
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
+}
+
+.culture__content p {
+  color: #f3e6d2;
+  max-width: 680px;
+  margin: 0 auto 1.5rem;
+  font-size: 1.1rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .culture__section {
+    min-height: 460px;
+  }
+
+  .culture__content h2 {
+    font-size: 1.8rem;
+  }
 }
 
 @media only screen and (max-width: 992px) {

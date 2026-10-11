@@ -53,6 +53,13 @@ const translations = {
       title: "Popular Kerala Destinations",
       enquire: "Enquire",
     },
+    culture: {
+      kicker: "Beyond Transport",
+      title: "Experience the Soul of Kerala",
+      description:
+        "From Kathakali performances to temple elephant processions — let us help you discover Kerala's living traditions, not just its roads.",
+      cta: "Plan a Cultural Tour",
+    },
     cta: {
       title: "Planning a trip?",
       description: "Get an instant quote on WhatsApp or give us a call — we're happy to help.",
@@ -89,6 +96,7 @@ const translations = {
       default: "Hi TravelSolutions, I'd like to enquire about a bus booking.",
       vehicle: (name, seats) => `Hi TravelSolutions, I'd like to enquire about the ${name} (${seats}).`,
       destination: (name) => `Hi TravelSolutions, I'd like to enquire about a tour package to ${name}.`,
+      culture: "Hi TravelSolutions, I'd like to enquire about a cultural tour package.",
     },
   },
   ml: {
@@ -142,6 +150,13 @@ const translations = {
       title: "ജനപ്രിയ കേരള ലക്ഷ്യസ്ഥാനങ്ങൾ",
       enquire: "അന്വേഷിക്കൂ",
     },
+    culture: {
+      kicker: "യാത്രയ്ക്കപ്പുറം",
+      title: "കേരളത്തിന്റെ ആത്മാവ് അനുഭവിക്കൂ",
+      description:
+        "കഥകളി അവതരണങ്ങൾ മുതൽ ക്ഷേത്ര ആനയൂട്ടുകൾ വരെ — കേരളത്തിന്റെ ജീവസ്സുറ്റ പാരമ്പര്യങ്ങൾ അറിയാൻ ഞങ്ങൾ സഹായിക്കാം.",
+      cta: "ഒരു സാംസ്കാരിക ടൂർ പ്ലാൻ ചെയ്യൂ",
+    },
     cta: {
       title: "യാത്ര പ്ലാൻ ചെയ്യുകയാണോ?",
       description: "വാട്ട്സ്ആപ്പിൽ ഉടൻ ക്വോട്ട് വാങ്ങൂ അല്ലെങ്കിൽ ഞങ്ങളെ വിളിക്കൂ — സഹായിക്കാൻ സന്തോഷമുണ്ട്.",
@@ -178,6 +193,7 @@ const translations = {
       default: "ഹായ് TravelSolutions, ഒരു ബസ് ബുക്കിംഗ് സംബന്ധിച്ച് അന്വേഷിക്കാൻ ആഗ്രഹിക്കുന്നു.",
       vehicle: (name, seats) => `ഹായ് TravelSolutions, ${name} (${seats}) സംബന്ധിച്ച് അന്വേഷിക്കാൻ ആഗ്രഹിക്കുന്നു.`,
       destination: (name) => `ഹായ് TravelSolutions, ${name}-ലേക്കുള്ള ഒരു ടൂർ പാക്കേജ് സംബന്ധിച്ച് അന്വേഷിക്കാൻ ആഗ്രഹിക്കുന്നു.`,
+      culture: "ഹായ് TravelSolutions, ഒരു സാംസ്കാരിക ടൂർ പാക്കേജ് സംബന്ധിച്ച് അന്വേഷിക്കാൻ ആഗ്രഹിക്കുന്നു.",
     },
   },
 };

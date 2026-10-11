@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Island+Moments&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@400;500;600;700&family=Manjari:wght@400;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@400;500;600;700&family=Manjari:wght@400;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Chilanka&display=swap");
 
 :root {
   --primary-color: #ff7e01;
@@ -8,13 +8,24 @@
   --heading-color: #0b2727;
   --text-color: #6e7074;
   --font-name: "Montserrat", sans-serif;
+  --heading-font-name: "Montserrat", sans-serif;
   --subtitle-font-name: "Island Moments", cursive;
+
+  /* Kerala-inspired festive palette: Kathakali crimson, temple gold, backwater green. */
+  --kerala-maroon: #7a1026;
+  --kerala-maroon-dark: #410a16;
+  --kerala-gold: #d4a62f;
+  --kerala-gold-light: #f3d27a;
+  --kerala-green: #0f5c3c;
+  --gradient-festive: linear-gradient(120deg, var(--kerala-maroon) 0%, var(--kerala-gold) 50%, var(--kerala-green) 100%);
+  --gradient-gold: linear-gradient(100deg, #a8790f, var(--kerala-gold-light), #a8790f);
 }
 
 /* Malayalam reading view: swap in fonts with proper Malayalam glyph support. */
 :root[data-lang="ml"] {
   --font-name: "Manjari", "Noto Sans Malayalam", sans-serif;
-  --subtitle-font-name: "Baloo Chettan 2", "Noto Sans Malayalam", sans-serif;
+  --heading-font-name: "Baloo Chettan 2", "Noto Sans Malayalam", sans-serif;
+  --subtitle-font-name: "Chilanka", "Noto Sans Malayalam", cursive;
 }
 
 * {
@@ -42,6 +53,31 @@ h4,
 h5,
 h6 {
   color: var(--heading-color);
+  font-family: var(--heading-font-name);
+}
+
+/* A thin kasavu-inspired gold/maroon border strip used between sections. */
+.kerala-divider {
+  height: 10px;
+  background: repeating-linear-gradient(
+    135deg,
+    var(--kerala-gold) 0px,
+    var(--kerala-gold) 10px,
+    var(--kerala-maroon) 10px,
+    var(--kerala-maroon) 20px
+  );
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 a {
@@ -53,10 +89,14 @@ ul {
 }
 
 .primary__btn {
-  background: var(--secondary-color) !important;
+  background: var(--gradient-festive) !important;
+  background-size: 200% 200% !important;
+  animation: gradientFlow 6s ease infinite;
   border: none !important;
   border-radius: 50px !important;
   padding: 0.4rem 1.5rem !important;
+  color: #fff !important;
+  box-shadow: 0 4px 14px rgba(122, 16, 38, 0.25);
 }
 
 .primary__btn a {
@@ -69,9 +109,15 @@ ul {
 }
 .secondary__btn {
   background: transparent !important;
-  color: #0b2727 !important;
-  border: none !important;
+  color: var(--kerala-maroon) !important;
+  border: 1.5px solid var(--kerala-maroon) !important;
   font-weight: 500 !important;
+  transition: background 0.25s, color 0.25s;
+}
+
+.secondary__btn:hover {
+  background: var(--kerala-maroon) !important;
+  color: #fff !important;
 }
 
 .secondary__btn a {
@@ -85,7 +131,9 @@ ul {
 }
 
 .section__subtitle {
-  background: var(--secondary-color);
+  background: var(--gradient-gold);
+  background-size: 200% 200%;
+  animation: gradientFlow 5s ease infinite;
   font-family: var(--subtitle-font-name);
   width: max-content;
   padding: 0px 0.5rem;
@@ -94,13 +142,14 @@ ul {
   border-radius: 50px;
   font-weight: 500;
   font-size: 1.7rem;
-  color: var(--heading-color);
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
 
 [data-lang="ml"] .section__subtitle {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 600;
-  padding: 0.2rem 1rem;
+  padding: 0.3rem 1.1rem;
 }
 
 @media only screen and (max-width: 992px) {
