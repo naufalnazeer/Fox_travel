@@ -34,6 +34,16 @@
   box-sizing: border-box;
 }
 
+/* AOS slide-in animations (fade-left/fade-right) translate elements past the
+   viewport edge before they animate into place. Without this, that momentary
+   off-screen position creates horizontal overflow that mobile browsers react
+   to by widening/zooming the whole layout. */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body {
   font-family: var(--font-name);
 }

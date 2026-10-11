@@ -35,10 +35,6 @@
   object-fit: cover;
 }
 
-.hero__content {
-  padding: 3.5rem;
-}
-
 .hero__img-box {
   padding-top: 2rem;
 }
@@ -126,30 +122,6 @@
   margin-top: 1rem;
 }
 
-.counter__wrapper {
-  margin-top: 2.5rem;
-}
-
-.counter__box span {
-  width: 70px;
-  height: 70px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--primary-color);
-  color: #fff;
-  font-size: 1.6rem;
-  font-weight: 600;
-  border-radius: 10px 5px 10px 5px;
-}
-
-.counter__box h6 {
-  font-size: 1.1rem;
-  margin-top: 0.7rem;
-  color: var(--text-color);
-}
-
 .experience__img img {
   width: 90%;
 }
@@ -166,11 +138,6 @@
 
 .masonry__img:hover {
   transform: scale(1.1);
-}
-
-.testimonial__title {
-  font-size: 2.3rem;
-  margin-top: 1rem;
 }
 
 .destination__card {
@@ -342,7 +309,6 @@
   .services__title,
   .featured_tour-title,
   .gallery__title,
-  .testimonial__title,
   .experience__content h2 {
     font-size: 2rem;
   }
@@ -383,7 +349,6 @@
   .services__title,
   .featured_tour-title,
   .gallery__title,
-  .testimonial__title,
   .experience__content h2 {
     font-size: 1.5rem;
   }
