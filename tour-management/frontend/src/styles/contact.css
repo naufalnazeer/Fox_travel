@@ -1,0 +1,60 @@
+.fleet__note {
+  color: var(--text-color);
+  font-size: 1rem;
+  max-width: 700px;
+}
+
+.contact__info {
+  padding-left: 0;
+  margin-top: 1.5rem;
+}
+
+.contact__info li {
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.contact__info li i {
+  font-size: 1.3rem;
+  color: var(--secondary-color);
+  margin-top: 0.1rem;
+}
+
+.contact__info li a {
+  color: var(--text-color);
+}
+
+.contact__btns button {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.social__links a {
+  font-size: 1.4rem;
+  color: var(--heading-color);
+}
+
+.contact__map iframe {
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 576px) {
+  .contact__btns {
+    flex-wrap: wrap;
+  }
+
+  .contact__btns button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .contact__map iframe {
+    height: 280px;
+  }
+}

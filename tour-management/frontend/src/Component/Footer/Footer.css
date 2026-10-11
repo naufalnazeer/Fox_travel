@@ -4,12 +4,16 @@
 
 }
 
-.footer .logo img {
-    width: 50%;
-    margin-bottom: 2rem;
+.footer__logo-text {
+    color: var(--heading-color);
+    margin-bottom: 1rem;
 }
 
-.footer .logo p {
+.footer__logo-text i {
+    color: var(--secondary-color);
+}
+
+.footer__brand p {
     color: var(--text-color);
 }
 

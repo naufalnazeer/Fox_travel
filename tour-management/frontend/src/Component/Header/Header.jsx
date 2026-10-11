@@ -1,35 +1,29 @@
-import React, { useEffect, useRef, useContext } from "react";
+import React, { useEffect, useRef } from "react";
 import { Container, Row, Button } from "reactstrap";
-import { NavLink, Link, useNavigate } from "react-router-dom";
-import Logo from "../../assest/images/logo.png";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import "./Header.css";
-import { AuthContext } from "../../context/AuthContext";
-
-const nav__links = [
-  {
-    path: "/home",
-    display: "Home",
-  },
-  {
-    path: "/about",
-    display: "About",
-  },
-  {
-    path: "/tours",
-    display: "Tours",
-  },
-];
+import siteConfig, { callLink } from "../../data/siteConfig";
+import { useLanguage } from "../../i18n/LanguageContext";
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
 const Header = () => {
   const headerRef = useRef(null);
   const menuRef = useRef(null);
-  const navigate = useNavigate();
-  const { user, dispatch } = useContext(AuthContext);
+  const { t } = useLanguage();
+  const location = useLocation();
 
-  const logout = () => {
-    dispatch({ type: "LOGOUT" });
-    navigate("/");
-  };
+  // Safety net: always close the mobile drawer on route change, even if a click
+  // somehow didn't bubble up to toggleMenu (e.g. browser back/forward navigation).
+  useEffect(() => {
+    menuRef.current?.classList.remove("show__menu");
+  }, [location.pathname]);
+
+  const nav__links = [
+    { path: "/home", display: t.nav.home },
+    { path: "/fleet-pricing", display: t.nav.fleet },
+    { path: "/gallery", display: t.nav.gallery },
+    { path: "/contact", display: t.nav.contact },
+  ];
 
   const stickyHeaderFunc = () => {
     window.addEventListener("scroll", () => {
@@ -57,12 +51,16 @@ const Header = () => {
       <Container>
         <Row>
           <div className="nav__wrapper d-flex align-items-center justify-content-between">
-            <div className="logo">
-              <img src={Logo} alt="" />
-            </div>
+            <Link to="/home" className="logo d-flex align-items-center gap-2">
+              <i className="ri-bus-2-fill"></i>
+              <span className="logo__text">{siteConfig.businessName}</span>
+            </Link>
 
             <div className="navigation" ref={menuRef} onClick={toggleMenu}>
-              <ul className="menu d-flex align-items-center gap-5">
+              <ul className="menu d-flex align-items-center gap-4">
+                <li className="menu__lang">
+                  <LanguageSwitcher />
+                </li>
                 {nav__links.map((item, index) => (
                   <li className="nav__item" key={index}>
                     <NavLink
@@ -78,32 +76,18 @@ const Header = () => {
               </ul>
             </div>
 
-            <div className="nav__right d-flex align-items-center gap-4">
+            <div className="nav__right d-flex align-items-center gap-3">
+              <LanguageSwitcher />
               <div className="nav__btns d-flex align-items-center gap-2">
-                {user ? (
-                  <>
-                    {" "}
-                    <h5 className="mb-0">{user.username}</h5>
-                    <Button className="btn btn-dark" onClick={logout}>
-                      Logout
-                    </Button>
-                  </>
-                ) : (
-                  <>
-                    <Button className="btn secondary__btn">
-                      <Link to="/login">Login</Link>
-                    </Button>
-                    <Button className="btn primary__btn">
-                      <Link to="/register">Register</Link>
-                    </Button>
-                  </>
-                )}
-                {/* <Button className='btn secondary__btn'><Link to='/login'>Login</Link></Button>
-                        <Button className='btn primary__btn'><Link to='/register'>Register</Link></Button> */}
+                <Button className="btn primary__btn">
+                  <a href={callLink}>
+                    <i className="ri-phone-line"></i> <span className="btn__label">{t.nav.callNow}</span>
+                  </a>
+                </Button>
               </div>
 
               <span className="mobile__menu" onClick={toggleMenu}>
-                <i class="ri-menu-line"></i>
+                <i className="ri-menu-line"></i>
               </span>
             </div>
           </div>

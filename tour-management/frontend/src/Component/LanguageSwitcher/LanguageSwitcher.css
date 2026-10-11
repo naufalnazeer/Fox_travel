@@ -1,0 +1,33 @@
+.lang__switcher {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--secondary-color);
+  border-radius: 50px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.lang__switcher button {
+  border: none;
+  background: transparent;
+  color: var(--heading-color);
+  font-family: "Manjari", "Noto Sans Malayalam", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.lang__switcher button.active {
+  background: var(--secondary-color);
+  color: #fff;
+}
+
+@media only screen and (max-width: 576px) {
+  .lang__switcher button {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+  }
+}

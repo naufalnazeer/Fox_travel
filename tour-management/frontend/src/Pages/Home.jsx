@@ -1,22 +1,29 @@
 import React from "react";
 
-import FeaturedTourList from "../Component/Featured-tours/FeaturedTourList";
-
 import "../styles/home.css";
 
 import { Container, Row, Col } from "reactstrap";
-import heroImg from "../assest/images/hero-img01.jpg";
-import heroImg02 from "../assest/images/hero-img02.jpg";
-import heroVideo from "../assest/images/hero-video.mp4";
+import heroHighwayBus from "../assest/images/travelfox/hero-highway-bus.jpg";
+import galleryScenicBridge from "../assest/images/travelfox/gallery-scenic-bridge.jpg";
 import Subtitle from "../Shared/Subtitle";
-import worldImg from "../assest/images/world.png";
-import Searchbar from "../Shared/Searchbar";
 import ServiceList from "../services/ServiceList";
-import experienceImg from "../assest/images/experience.png";
 import MasonryImageGallery from "../Component/image-gallery/MasonryImageGallery";
-import Testimonial from "../Component/Testimonial/Testimonial";
+import FleetCard from "../Component/Fleet/FleetCard";
+import fleetData from "../data/fleet";
+import { callLink, whatsappLink } from "../data/siteConfig";
+import { Link } from "react-router-dom";
+import { useLanguage } from "../i18n/LanguageContext";
+
+const whyUsIcons = [
+  "ri-shield-check-line",
+  "ri-time-line",
+  "ri-sparkling-2-line",
+  "ri-price-tag-3-line",
+];
 
 const Home = () => {
+  const { t } = useLanguage();
+
   return (
     <>
       <section>
@@ -25,46 +32,38 @@ const Home = () => {
             <Col lg="6">
               <div className="hero_content">
                 <div className="hero__subtitle d-flex align-items-center">
-                  <Subtitle Subtitle={"Know Before You Go"} />
-                  <img src={worldImg} alt="" />
+                  <Subtitle Subtitle={t.hero.badge} />
                 </div>
                 <h1>
-                  Traveling opens the door to creating
-                  <span className="highlight">memories</span>
+                  {t.hero.headingPrefix}
+                  <span className="highlight"> {t.hero.headingHighlight}</span>
                 </h1>
                 <p>
-                  Discover, plan, and book unforgettable adventures with ease.
-                  At [Your Website Name], we bring the world to your fingertips
-                  — whether you're craving a tropical beach escape, a thrilling
-                  mountain trek, or a cultural city tour, we’ve got the perfect
-                  journey waiting for you.
+                  {t.hero.description}
                   <br />
                   <br />
-                  Start your next journey with confidence. Explore our best
-                  deals, customize your itinerary, and let us take care of the
-                  rest.
+                  {t.hero.description2}
                 </p>
+                <div className="hero__btns d-flex align-items-center gap-3">
+                  <a href={whatsappLink(t.whatsapp.default)} target="_blank" rel="noreferrer">
+                    <button className="btn primary__btn">
+                      <i className="ri-whatsapp-line"></i> {t.hero.ctaQuote}
+                    </button>
+                  </a>
+                  <a href={callLink}>
+                    <button className="btn secondary__btn">
+                      <i className="ri-phone-line"></i> {t.hero.ctaCall}
+                    </button>
+                  </a>
+                </div>
               </div>
             </Col>
 
-            <Col lg="2">
+            <Col lg="6">
               <div className="hero__img-box">
-                <img src={heroImg} alt="" />
+                <img src={heroHighwayBus} alt="TravelSolutions tour bus on the highway" />
               </div>
             </Col>
-
-            <Col lg="2">
-              <div className="hero__img-box hero__video-box mt-4">
-                <video src={heroVideo} alt="" controls />
-              </div>
-            </Col>
-
-            <Col lg="2">
-              <div className="hero__img-box mt-5">
-                <img src={heroImg02} alt="" controls />
-              </div>
-            </Col>
-            <Searchbar />
           </Row>
         </Container>
       </section>
@@ -73,8 +72,8 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="3">
-              <h5 className="services__subtitle">What we serve</h5>
-              <h1 className="services__title">We offer our best services</h1>
+              <h5 className="services__subtitle">{t.services.kicker}</h5>
+              <h1 className="services__title">{t.services.title}</h1>
             </Col>
             <ServiceList />
           </Row>
@@ -85,10 +84,19 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="12" className="mb-5">
-              <Subtitle Subtitle={"Explore"} />
-              <h2 className="featured_tour-title">Our featured tours</h2>
+              <Subtitle Subtitle={t.fleetSection.kicker} />
+              <h2 className="featured_tour-title">{t.fleetSection.title}</h2>
             </Col>
-            <FeaturedTourList />
+            {fleetData.map((vehicle) => (
+              <Col lg="4" md="6" sm="12" className="mb-4" key={vehicle.id}>
+                <FleetCard vehicle={vehicle} />
+              </Col>
+            ))}
+            <Col lg="12" className="text-center mt-3">
+              <Link to="/fleet-pricing">
+                <button className="btn primary__btn">{t.fleetSection.viewAll}</button>
+              </Link>
+            </Col>
           </Row>
         </Container>
       </section>
@@ -98,44 +106,22 @@ const Home = () => {
           <Row>
             <Col lg="6">
               <div className="experience__content">
-                <Subtitle Subtitle={"Experience"} />
-                <h2>
-                  With our all experience <br />
-                  we will serve you
-                </h2>
-                <p>
-                  With over <b>5</b> years in the travel industry,{" "}
-                  <b>TOURS AND TRAVELS BOOKING</b> has proudly helped thousands
-                  of travelers explore the world with confidence and joy. Our
-                  journey began with a passion for adventure and a mission to
-                  make travel accessible, safe, and unforgettable for everyone
-                  <br />
-                  <br />
-                  Whether you’re booking your first trip or your fiftieth, our
-                  experienced team ensures every moment is planned to perfection
-                  — from the first click to your final destination.
-                  <br />
-                  Travel with experts. Travel with heart.
-                </p>
+                <Subtitle Subtitle={t.whyUs.kicker} />
+                <h2>{t.whyUs.title}</h2>
+                <p>{t.whyUs.description}</p>
               </div>
-              <div className="counter__wrapper d-flex align-items-center gap-5">
-                <div className="counter__box">
-                  <span>12k+</span>
-                  <h6>Successful Trip</h6>
-                </div>
-                <div className="counter__box">
-                  <span>2k+</span>
-                  <h6>Regular clients</h6>
-                </div>
-                <div className="counter__box">
-                  <span>15k</span>
-                  <h6>Years experience</h6>
-                </div>
+              <div className="why__us-grid mt-4">
+                {t.whyUs.items.map((item, index) => (
+                  <div className="why__us-item d-flex align-items-center gap-3" key={index}>
+                    <i className={whyUsIcons[index]}></i>
+                    <span>{item}</span>
+                  </div>
+                ))}
               </div>
             </Col>
             <Col lg="6">
               <div className="experience__img">
-                <img src={experienceImg} alt="" />
+                <img src={galleryScenicBridge} alt="TravelSolutions bus on a scenic route" />
               </div>
             </Col>
           </Row>
@@ -146,10 +132,8 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="12">
-              <Subtitle Subtitle={"Gallery"} />
-              <h2 className="gallery__title">
-                Visit our customers tour gallery
-              </h2>
+              <Subtitle Subtitle={t.gallerySection.kicker} />
+              <h2 className="gallery__title">{t.gallerySection.title}</h2>
             </Col>
             <Col lg="12">
               <MasonryImageGallery />
@@ -158,15 +142,24 @@ const Home = () => {
         </Container>
       </section>
 
-      <section>
+      <section className="cta__band">
         <Container>
           <Row>
-            <Col lg="12">
-              <Subtitle Subtitle={"Fans Love"} />
-              <h2 className="testimoial__title">what out fans say about</h2>
-            </Col>
-            <Col lg="12">
-              <Testimonial />
+            <Col lg="8" className="mx-auto text-center">
+              <h2>{t.cta.title}</h2>
+              <p>{t.cta.description}</p>
+              <div className="d-flex align-items-center justify-content-center flex-wrap gap-3 mt-3">
+                <a href={whatsappLink(t.whatsapp.default)} target="_blank" rel="noreferrer">
+                  <button className="btn primary__btn">
+                    <i className="ri-whatsapp-line"></i> {t.cta.whatsapp}
+                  </button>
+                </a>
+                <a href={callLink}>
+                  <button className="btn secondary__btn">
+                    <i className="ri-phone-line"></i> {t.hero.ctaCall}
+                  </button>
+                </a>
+              </div>
             </Col>
           </Row>
         </Container>

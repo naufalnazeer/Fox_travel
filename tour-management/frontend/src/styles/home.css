@@ -11,11 +11,11 @@
   color: var(--heading-color);
 }
 
-.hero__content h1 .highlight {
+.hero_content h1 .highlight {
   color: var(--secondary-color);
 }
 
-.hero__content p {
+.hero_content p {
   font-size: 1.1rem;
   color: var(--text-color);
   line-height: 2rem;
@@ -24,7 +24,7 @@
 .hero__img-box img,
 .hero__img-box video {
   width: 100%;
-  height: 350px;
+  height: 480px;
   border-radius: 20px;
   border: 1px solid var(--secondary-color);
   object-fit: cover;
@@ -36,6 +36,52 @@
 
 .hero__img-box {
   padding-top: 2rem;
+}
+
+.hero__btns button {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.why__us-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.why__us-item {
+  font-size: 0.95rem;
+  color: var(--heading-color);
+  font-weight: 500;
+}
+
+.why__us-item i {
+  font-size: 1.4rem;
+  color: var(--secondary-color);
+}
+
+.cta__band {
+  background: var(--heading-color);
+}
+
+.cta__band h2 {
+  color: #fff;
+}
+
+.cta__band p {
+  color: #d6d6d6;
+}
+
+.cta__band button {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cta__band .secondary__btn {
+  color: #fff !important;
+  border: 1px solid #fff !important;
 }
 
 .services__subtitle {
@@ -115,17 +161,19 @@
 }
 
 @media only screen and (max-width: 992px) {
-  .hero__content h1 {
+  .hero_content h1 {
     font-size: 2.7rem;
   }
 
-  .hero__img-box {
-    display: none;
+  .hero__img-box img,
+  .hero__img-box video {
+    height: 320px;
   }
 
-  .hero__video-box {
-    display: block;
+  .hero_content {
+    padding: 1.5rem 0;
   }
+
   .services__title,
   .featured_tour-title,
   .gallery__title,
@@ -137,11 +185,34 @@
   .experience__img {
     margin-top: 2rem;
   }
+
+  .why__us-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media only screen and (max-width: 576px) {
-  .hero__content h1 {
+  .hero_content h1 {
     font-size: 1.8rem;
+  }
+
+  .hero_content {
+    padding: 1rem 0;
+  }
+
+  .hero__img-box img,
+  .hero__img-box video {
+    height: 220px;
+    border-radius: 14px;
+  }
+
+  .hero__btns {
+    flex-wrap: wrap;
+  }
+
+  .hero__btns button {
+    width: 100%;
+    justify-content: center;
   }
 
   .services__title,
@@ -150,5 +221,14 @@
   .testimonial__title,
   .experience__content h2 {
     font-size: 1.5rem;
+  }
+
+  .cta__band .d-flex {
+    flex-wrap: wrap;
+  }
+
+  .cta__band button {
+    width: 100%;
+    justify-content: center;
   }
 }

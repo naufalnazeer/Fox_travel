@@ -4,142 +4,118 @@ import "./Footer.css";
 import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
 
 import { Link } from "react-router-dom";
-import logo from "../../../src/assest/images/logo.png";
-
-const quick__links = [
-  {
-    path: "/home",
-    display: "Home",
-  },
-  {
-    path: "/about",
-    display: "About",
-  },
-  {
-    path: "/tours",
-    display: "Tours",
-  },
-];
-
-const quick_links2 = [
-  {
-    path: "/gallery",
-    display: "Gallery",
-  },
-  {
-    path: "/login",
-    display: "Login",
-  },
-  {
-    path: "/register",
-    display: "Register",
-  },
-];
+import siteConfig, { callLink, emailLink, whatsappLink } from "../../data/siteConfig";
+import servicesData from "../../data/services";
+import { useLanguage } from "../../i18n/LanguageContext";
 
 const Footer = () => {
+  const year = new Date().getFullYear();
+  const { t, lang } = useLanguage();
+
+  const quick__links = [
+    { path: "/home", display: t.nav.home },
+    { path: "/fleet-pricing", display: t.nav.fleet },
+    { path: "/gallery", display: t.nav.gallery },
+    { path: "/contact", display: t.nav.contact },
+  ];
 
   return (
     <footer className="footer">
       <Container>
         <Row>
-          <Col lg="3">
-          <div className="logo">
-            <img src={logo} alt=" "/>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing. Eius harum cupiditate aliquid in doloremque assumenda, veritatis eveniet magnam reprehenderit. Eius illo deleniti eligendi, nobis aperiam nisi. Nesciunt, distinctio dolores?</p>
-            
-            <div className="social__links d-flex align-items-center gap-4">
-              <span>
-                <Link to='#'><i class="ri-youtube-line"></i> </Link>
-              </span>
-              <span>
-                <Link to='#'><i class="ri-github-fill"></i> </Link>
-              </span>
-              <span>
-                <Link to='#'><i class="ri-facebook-fill"></i> </Link>
-              </span>
-              <span>
-                <Link to='#'><i class="ri-instagram-fill"></i></Link>
-              </span>
+          <Col lg="4" md="6">
+            <div className="footer__brand">
+              <h3 className="footer__logo-text">
+                <i className="ri-bus-2-fill"></i> {siteConfig.businessName}
+              </h3>
+              <p>{t.footer.description}</p>
+
+              <div className="social__links d-flex align-items-center gap-4">
+                <span>
+                  <a href={siteConfig.social.facebook} target="_blank" rel="noreferrer">
+                    <i className="ri-facebook-fill"></i>
+                  </a>
+                </span>
+                <span>
+                  <a href={siteConfig.social.instagram} target="_blank" rel="noreferrer">
+                    <i className="ri-instagram-fill"></i>
+                  </a>
+                </span>
+                <span>
+                  <a href={siteConfig.social.youtube} target="_blank" rel="noreferrer">
+                    <i className="ri-youtube-line"></i>
+                  </a>
+                </span>
+                <span>
+                  <a href={whatsappLink(t.whatsapp.default)} target="_blank" rel="noreferrer">
+                    <i className="ri-whatsapp-line"></i>
+                  </a>
+                </span>
+              </div>
             </div>
-          </div>
           </Col>
 
-          <Col lg='3'>
-           <h5 className="footer__link-title">Discover</h5>
+          <Col lg="2" md="6">
+            <h5 className="footer__link-title">{t.footer.quickLinks}</h5>
 
-           <ListGroup className="footer__quick-links">
-           {quick__links.map((item, index) => (
-           <ListGroupItem key={index} className="ps-0 border-0">
-            <Link to={item.path}>{item.display}</Link>
-            </ListGroupItem>
-            ))}
-           </ListGroup>
-           </Col>
-          <Col lg='3'>
-          <h5 className="footer__link-title">Quick Links</h5>
+            <ListGroup className="footer__quick-links">
+              {quick__links.map((item, index) => (
+                <ListGroupItem key={index} className="ps-0 border-0">
+                  <Link to={item.path}>{item.display}</Link>
+                </ListGroupItem>
+              ))}
+            </ListGroup>
+          </Col>
 
-             <ListGroup className="footer__quick-links">
-             {quick_links2.map((item, index) => (
-             <ListGroupItem key={index} className="ps-0 border-0">
-            <Link to={item.path}>{item.display}</Link>
-            </ListGroupItem>
-           ))}
-          </ListGroup>
-                    </Col>
-                    <Col lg='3'>
-                    <h5 className="footer__link-title">Contact</h5>
+          <Col lg="3" md="6">
+            <h5 className="footer__link-title">{t.footer.ourServices}</h5>
 
-             <ListGroup className="footer__quick-links">
-             
-             <ListGroupItem  className="ps-0 border-0 d-flex align-items-center gap-3">
+            <ListGroup className="footer__quick-links">
+              {servicesData.map((item, index) => (
+                <ListGroupItem key={index} className="ps-0 border-0">
+                  {item.title[lang]}
+                </ListGroupItem>
+              ))}
+            </ListGroup>
+          </Col>
 
-              <h6 className="mb-0 d-flex align-items-center gap-2">
+          <Col lg="3" md="6">
+            <h5 className="footer__link-title">{t.footer.contact}</h5>
+
+            <ListGroup className="footer__quick-links">
+              <ListGroupItem className="ps-0 border-0 d-flex align-items-start gap-3">
                 <span>
-                <i class="ri-map-pin-line"></i>
-               
+                  <i className="ri-map-pin-line"></i>
                 </span>
-                addresses:
-              </h6>
-
-              <p className="mb-0">Eknaligoda,kuruvita,ratnapura</p>
+                <p className="mb-0">
+                  {siteConfig.address.line1}
+                  <br />
+                  {siteConfig.address.line2}
+                </p>
               </ListGroupItem>
-              <ListGroupItem  className="ps-0 border-0 d-flex align-items-center gap-3">
-
-             <h6 className="mb-0 d-flex align-items-center gap-2">
-            <span>
-            <i class="ri-mail-line"></i>
-           Email:
-  </span>
-</h6>
-
-<p className="mb-0">madhawakavindu7@.com</p>
+              <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-3">
+                <span>
+                  <i className="ri-mail-line"></i>
+                </span>
+                <a href={emailLink}>{siteConfig.email}</a>
               </ListGroupItem>
-              <ListGroupItem  className="ps-0 border-0 d-flex align-items-center gap-3">
+              <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-3">
+                <span>
+                  <i className="ri-phone-line"></i>
+                </span>
+                <a href={callLink}>{siteConfig.phoneDisplay}</a>
+              </ListGroupItem>
+            </ListGroup>
+          </Col>
 
-             <h6 className="mb-0 d-flex align-items-center gap-2">
-            <span>
-            <i class="ri-phone-line"></i>
-           Phone:
-  </span>
-</h6>
-
-
-
-<p className="mb-0">+94703281170,+94772849767</p>
-
-</ListGroupItem>
-          </ListGroup>
-        </Col>
-                       
-                        
-                 <Col lg='12' className="text-center pt-5"><p className="copyright">Copyright 2025, 
-                  design and develop by
-                  Ratnapura house.All rights reserved.</p>
-                        </Col>       
-                 </Row>
-               </Container>
-              </footer>
+          <Col lg="12" className="text-center pt-5">
+            <p className="copyright">
+              © {year} {siteConfig.businessName}. {t.footer.rights}
+            </p>
+          </Col>
+        </Row>
+      </Container>
+    </footer>
   );
-
 };
 export default Footer;
