@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { AdminAuthProvider } from "./AdminAuthContext";
 import ProtectedAdminRoute from "./ProtectedAdminRoute";
 import AdminLogin from "./AdminLogin";
+import AcceptInvite from "./AcceptInvite";
 import AdminLayout from "./AdminLayout";
 import EntityListPage from "./EntityListPage";
 import EntityFormPage from "./EntityFormPage";
@@ -20,6 +21,7 @@ const AdminRoutes = () => {
     <AdminAuthProvider>
       <Routes>
         <Route path="login" element={<AdminLogin />} />
+        <Route path="accept-invite" element={<AcceptInvite />} />
         <Route
           element={
             <ProtectedAdminRoute>

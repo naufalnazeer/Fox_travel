@@ -19,22 +19,32 @@ Project -> **Storage** -> **New bucket**:
 - Name: `media` (exact name — the SQL policies reference it)
 - Public bucket: **ON** (so images can be displayed on the public site without login)
 
-## 3. Invite your admin users (up to 5)
+## 3. Point invite links at the acceptance page
+
+Project -> **Authentication** -> **URL Configuration**:
+- **Site URL**: your deployed site, e.g. `https://your-site.com`
+- **Redirect URLs**: add `https://your-site.com/admin/accept-invite` (and the
+  `http://localhost:3000/admin/accept-invite` equivalent while testing locally)
+
+This is the page in this app (`/admin/accept-invite`) that lets an invited
+user set their own password.
+
+## 4. Invite your admin users (up to 5)
 
 Project -> **Authentication** -> **Users** -> **Invite user**, enter their email.
-Supabase emails them a link to set their own password — you never need to
-handle or share a password.
+Supabase emails them a link that opens `/admin/accept-invite`, where they set
+their own password — you never need to handle or share a password.
 
 Repeat for each of the up to 5 admins.
 
-## 4. Grant each invited user admin access
+## 5. Grant each invited user admin access
 
-For **each** person you invited in step 3: open
+For **each** person you invited in step 4: open
 [`add-admin.sql`](add-admin.sql), replace the placeholder email with theirs,
 and run it in the SQL Editor. (A 6th attempt will fail on purpose — that's the
 5-admin cap working as intended.)
 
-## 5. Send me these two values
+## 6. Send me these two values
 
 Project -> **Settings** -> **API**:
 - **Project URL** (looks like `https://xxxxxxxx.supabase.co`)
