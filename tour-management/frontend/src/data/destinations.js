@@ -32,7 +32,7 @@ const destinationsData = [
   {
     id: "goa",
     name: { en: "Goa", ml: "ഗോവ" },
-    img: null,
+    img: "https://images.unsplash.com/photo-1594313059730-8d0a02f44847?w=800&h=600&fit=crop&q=70&auto=format",
     desc: {
       en: "Golden beaches, Portuguese-era churches, and a laid-back coastal vibe — perfect for a fun group getaway.",
       ml: "സ്വർണ്ണനിറമുള്ള കടൽത്തീരങ്ങളും പോർച്ചുഗീസ് കാലഘട്ടത്തിലെ പള്ളികളും സ്വസ്ഥമായ തീരദേശ അന്തരീക്ഷവും — രസകരമായ ഗ്രൂപ്പ് യാത്രയ്ക്ക് അനുയോജ്യം.",
@@ -41,7 +41,7 @@ const destinationsData = [
   {
     id: "kodaikanal",
     name: { en: "Kodaikanal", ml: "കൊടൈക്കനാൽ" },
-    img: "https://images.unsplash.com/photo-1772729756487-4f0169ee28e5?w=800&h=600&fit=crop&q=70&auto=format",
+    img: "https://images.unsplash.com/photo-1590265787538-4dc8fdeb9651?w=800&h=600&fit=crop&q=70&auto=format",
     desc: {
       en: "A serene hill station with a star-shaped lake, pine forests, and cool year-round weather.",
       ml: "നക്ഷത്രാകൃതിയിലുള്ള തടാകവും പൈൻ വനങ്ങളും വർഷം മുഴുവൻ തണുത്ത കാലാവസ്ഥയുമുള്ള ശാന്തമായ മലയോര പട്ടണം.",
@@ -50,7 +50,7 @@ const destinationsData = [
   {
     id: "coorg",
     name: { en: "Coorg", ml: "കൂർഗ്" },
-    img: null,
+    img: "https://images.unsplash.com/photo-1788097429655-670c7f8d79ea?w=800&h=600&fit=crop&q=70&auto=format",
     desc: {
       en: "Coffee plantations, misty hills, and waterfalls — often called the Scotland of India.",
       ml: "കാപ്പിത്തോട്ടങ്ങളും മൂടൽമഞ്ഞ് മലകളും വെള്ളച്ചാട്ടങ്ങളും — ഇന്ത്യയുടെ സ്കോട്ട്ലൻഡ് എന്നറിയപ്പെടുന്ന സ്ഥലം.",
