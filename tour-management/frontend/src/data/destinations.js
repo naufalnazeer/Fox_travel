@@ -104,7 +104,7 @@ const destinationsData = [
   {
     id: "guruvayur",
     name: { en: "Guruvayur", ml: "ഗുരുവായൂർ" },
-    img: null,
+    img: "https://images.unsplash.com/photo-1645441510555-ad67c4b5be0e?w=800&h=600&fit=crop&q=70&auto=format",
     desc: {
       en: "A revered Krishna temple town, one of Kerala's most visited pilgrim centers.",
       ml: "കേരളത്തിലെ ഏറ്റവും കൂടുതൽ സന്ദർശിക്കപ്പെടുന്ന തീർത്ഥാടന കേന്ദ്രങ്ങളിലൊന്നായ, ശ്രീകൃഷ്ണ ക്ഷേത്രം സ്ഥിതി ചെയ്യുന്ന പട്ടണം.",
