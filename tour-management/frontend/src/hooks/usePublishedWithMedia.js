@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { supabase, isSupabaseConfigured } from "../lib/supabaseClient";
 
-// Fetches every row from `table` (RLS already limits anonymous visitors to
-// is_published = true rows) plus its photos from the shared `media` table,
-// attached as row.images (an array of public URLs, in sort_order).
+// Fetches published rows from `table` plus their photos from the shared
+// `media` table, attached as row.images (an array of public URLs, in
+// sort_order). Filters is_published explicitly rather than relying on RLS
+// alone — RLS lets admins read drafts too (so the dashboard can list them),
+// which would otherwise leak drafts onto the public pages for anyone
+// browsing them while signed in as an admin.
 const usePublishedWithMedia = (table, entityType) => {
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -22,6 +25,7 @@ const usePublishedWithMedia = (table, entityType) => {
       const { data: items, error: itemsError } = await supabase
         .from(table)
         .select("*")
+        .eq("is_published", true)
         .order("created_at", { ascending: false });
 
       if (itemsError) {
