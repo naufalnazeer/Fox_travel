@@ -1,8 +1,10 @@
 import { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./App.css";
 import Layout from "./Component/Layout/Layout";
+import AdminRoutes from "./admin/AdminRoutes";
 import { useLanguage } from "./i18n/LanguageContext";
 
 function App() {
@@ -18,7 +20,14 @@ function App() {
     AOS.refresh();
   }, [lang]);
 
-  return <Layout />;
+  return (
+    <Routes>
+      {/* The admin dashboard has its own sidebar layout — it deliberately
+          bypasses the public site's Header/Footer/WhatsApp button. */}
+      <Route path="/admin/*" element={<AdminRoutes />} />
+      <Route path="/*" element={<Layout />} />
+    </Routes>
+  );
 }
 
 export default App;

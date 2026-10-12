@@ -21,6 +21,8 @@ const Header = () => {
   const nav__links = [
     { path: "/home", display: t.nav.home },
     { path: "/fleet-pricing", display: t.nav.fleet },
+    { path: "/packages", display: t.nav.packages },
+    { path: "/hotels", display: t.nav.hotels },
     { path: "/gallery", display: t.nav.gallery },
     { path: "/contact", display: t.nav.contact },
   ];
@@ -57,7 +59,7 @@ const Header = () => {
             </Link>
 
             <div className="navigation" ref={menuRef} onClick={toggleMenu}>
-              <ul className="menu d-flex align-items-center gap-4">
+              <ul className="menu d-flex align-items-center gap-3">
                 <li className="menu__lang">
                   <LanguageSwitcher />
                 </li>

@@ -1,0 +1,18 @@
+.coming-soon {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background: #faf9f6;
+  border-radius: 14px;
+  color: var(--text-color);
+}
+
+.coming-soon i {
+  font-size: 2.2rem;
+  color: var(--secondary-color);
+  margin-bottom: 0.8rem;
+  display: inline-block;
+}
+
+.coming-soon h4 {
+  margin-bottom: 0.4rem;
+}

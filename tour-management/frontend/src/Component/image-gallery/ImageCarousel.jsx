@@ -1,8 +1,7 @@
 import React, { useRef } from "react";
 import "./ImageCarousel.css";
-import galleryImages from "./galleryImage";
 
-const ImageCarousel = () => {
+const ImageCarousel = ({ images }) => {
   const trackRef = useRef(null);
 
   const scrollByAmount = (direction) => {
@@ -12,6 +11,8 @@ const ImageCarousel = () => {
     const amount = (slide ? slide.offsetWidth : 300) + 16;
     track.scrollBy({ left: direction * amount, behavior: "smooth" });
   };
+
+  if (!images || images.length === 0) return null;
 
   return (
     <div className="image-carousel">
@@ -25,7 +26,7 @@ const ImageCarousel = () => {
       </button>
 
       <div className="carousel__track" ref={trackRef}>
-        {galleryImages.map((img, index) => (
+        {images.map((img, index) => (
           <div className="carousel__slide" key={index}>
             <img src={img} alt="" loading="lazy" />
           </div>

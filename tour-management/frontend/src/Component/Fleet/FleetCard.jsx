@@ -11,8 +11,8 @@ const FleetCard = ({ vehicle }) => {
   return (
     <div className="fleet__card">
       <Card>
-        <div className="fleet__img">
-          <img src={img} alt={name[lang]} />
+        <div className={`fleet__img${img ? "" : " fleet__img--placeholder"}`}>
+          {img ? <img src={img} alt={name[lang]} /> : <i className="ri-bus-2-line"></i>}
           {popular && <span>{t.fleetSection.popular}</span>}
         </div>
 

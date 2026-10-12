@@ -11,7 +11,10 @@ import Subtitle from "../Shared/Subtitle";
 import ServiceList from "../services/ServiceList";
 import ImageCarousel from "../Component/image-gallery/ImageCarousel";
 import FleetCard from "../Component/Fleet/FleetCard";
-import fleetData from "../data/fleet";
+import EntityCard from "../Component/shared/EntityCard";
+import ComingSoon from "../Component/shared/ComingSoon";
+import usePublishedWithMedia from "../hooks/usePublishedWithMedia";
+import mapFleetRow from "../utils/mapFleetRow";
 import destinationsData from "../data/destinations";
 import { callLink, whatsappLink } from "../data/siteConfig";
 import { Link } from "react-router-dom";
@@ -26,6 +29,16 @@ const whyUsIcons = [
 
 const Home = () => {
   const { t, lang } = useLanguage();
+
+  const { rows: fleetRows, loading: fleetLoading } = usePublishedWithMedia("fleet_vehicles", "fleet");
+  const { rows: packageRows, loading: packagesLoading } = usePublishedWithMedia("packages", "package");
+  const { rows: hotelRows, loading: hotelsLoading } = usePublishedWithMedia("hotel_rooms", "hotel");
+  const { rows: galleryRows } = usePublishedWithMedia("gallery_items", "gallery");
+
+  const vehicles = fleetRows.slice(0, 3).map(mapFleetRow);
+  const packages = packageRows.slice(0, 3);
+  const hotels = hotelRows.slice(0, 3);
+  const galleryImages = galleryRows.flatMap((row) => row.images);
 
   return (
     <>
@@ -92,7 +105,14 @@ const Home = () => {
               <Subtitle Subtitle={t.fleetSection.kicker} />
               <h2 className="featured_tour-title">{t.fleetSection.title}</h2>
             </Col>
-            {fleetData.map((vehicle, index) => (
+
+            {!fleetLoading && vehicles.length === 0 && (
+              <Col lg="12" className="mb-4">
+                <ComingSoon title={t.fleetEmpty} />
+              </Col>
+            )}
+
+            {vehicles.map((vehicle, index) => (
               <Col
                 lg="4"
                 md="6"
@@ -110,6 +130,106 @@ const Home = () => {
                 <button className="btn primary__btn">{t.fleetSection.viewAll}</button>
               </Link>
             </Col>
+          </Row>
+        </Container>
+      </section>
+
+      <section>
+        <Container>
+          <Row>
+            <Col lg="12" className="mb-5" data-aos="fade-up">
+              <Subtitle Subtitle={t.packagesSection.kicker} />
+              <h2 className="featured_tour-title">{t.packagesSection.title}</h2>
+            </Col>
+
+            {!packagesLoading && packages.length === 0 && (
+              <Col lg="12" className="mb-4">
+                <ComingSoon title={t.packagesPage.empty} />
+              </Col>
+            )}
+
+            {packages.map((pkg, index) => (
+              <Col
+                lg="4"
+                md="6"
+                sm="12"
+                className="mb-4"
+                key={pkg.id}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+              >
+                <EntityCard
+                  image={pkg.images[0]}
+                  badge={pkg.offer_rate ? "Offer" : null}
+                  title={lang === "ml" ? pkg.title_ml : pkg.title_en}
+                  meta={`${pkg.days} ${t.packagesPage.days} · ${pkg.available_seats} ${t.packagesPage.seatsLeft}`}
+                  regularRate={pkg.regular_rate}
+                  offerRate={pkg.offer_rate}
+                  rateUnit={t.packagesPage.perPerson}
+                  ctaLabel={t.packagesPage.enquire}
+                  ctaHref={whatsappLink(t.whatsapp.package(lang === "ml" ? pkg.title_ml : pkg.title_en))}
+                />
+              </Col>
+            ))}
+
+            {packages.length > 0 && (
+              <Col lg="12" className="text-center mt-3">
+                <Link to="/packages">
+                  <button className="btn primary__btn">{t.packagesSection.viewAll}</button>
+                </Link>
+              </Col>
+            )}
+          </Row>
+        </Container>
+      </section>
+
+      <section>
+        <Container>
+          <Row>
+            <Col lg="12" className="mb-5" data-aos="fade-up">
+              <Subtitle Subtitle={t.hotelsSection.kicker} />
+              <h2 className="featured_tour-title">{t.hotelsSection.title}</h2>
+            </Col>
+
+            {!hotelsLoading && hotels.length === 0 && (
+              <Col lg="12" className="mb-4">
+                <ComingSoon title={t.hotelsPage.empty} />
+              </Col>
+            )}
+
+            {hotels.map((room, index) => (
+              <Col
+                lg="4"
+                md="6"
+                sm="12"
+                className="mb-4"
+                key={room.id}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+              >
+                <EntityCard
+                  image={room.images[0]}
+                  badge={room.offer_rate ? "Offer" : null}
+                  title={`${room.hotel_name} — ${lang === "ml" ? room.room_title_ml : room.room_title_en}`}
+                  meta={`${room.available_rooms} ${t.hotelsPage.roomsLeft}`}
+                  regularRate={room.regular_rate}
+                  offerRate={room.offer_rate}
+                  rateUnit={t.hotelsPage.perNight}
+                  ctaLabel={t.hotelsPage.enquire}
+                  ctaHref={whatsappLink(
+                    t.whatsapp.hotel(room.hotel_name, lang === "ml" ? room.room_title_ml : room.room_title_en)
+                  )}
+                />
+              </Col>
+            ))}
+
+            {hotels.length > 0 && (
+              <Col lg="12" className="text-center mt-3">
+                <Link to="/hotels">
+                  <button className="btn primary__btn">{t.hotelsSection.viewAll}</button>
+                </Link>
+              </Col>
+            )}
           </Row>
         </Container>
       </section>
@@ -220,7 +340,11 @@ const Home = () => {
               <h2 className="gallery__title">{t.gallerySection.title}</h2>
             </Col>
             <Col lg="12">
-              <ImageCarousel />
+              {galleryImages.length === 0 ? (
+                <ComingSoon title={t.galleryPage.empty} />
+              ) : (
+                <ImageCarousel images={galleryImages} />
+              )}
             </Col>
           </Row>
         </Container>

@@ -6,6 +6,8 @@ const translations = {
     nav: {
       home: "Home",
       fleet: "Fleet & Pricing",
+      packages: "Packages",
+      hotels: "Hotels",
       gallery: "Gallery",
       contact: "Contact",
       callNow: "Call Now",
@@ -49,9 +51,19 @@ const translations = {
       title: "Our fleet in action",
     },
     destinations: {
-      kicker: "Tour Packages",
+      kicker: "Explore Kerala",
       title: "Popular Kerala Destinations",
       enquire: "Enquire",
+    },
+    packagesSection: {
+      kicker: "Tour Packages",
+      title: "Handpicked Holiday Packages",
+      viewAll: "View All Packages",
+    },
+    hotelsSection: {
+      kicker: "Hotel Stays",
+      title: "Partner Hotels & Rooms",
+      viewAll: "View All Hotels",
     },
     culture: {
       kicker: "Beyond Transport",
@@ -74,8 +86,28 @@ const translations = {
     },
     galleryPage: {
       title: "Gallery",
-      note: "A preview of the kind of buses and trips TravelSolutions offers. Real photos of our fleet and past trips will replace these soon.",
+      note: "A look at TravelSolutions' fleet, trips, and destinations.",
+      empty: "No photos yet — check back soon.",
     },
+    packagesPage: {
+      title: "Tour Packages",
+      note: "Holiday packages with transport, stay, and sightseeing arranged for you.",
+      empty: "No tour packages published yet. Check back soon, or ask us directly on WhatsApp.",
+      perPerson: "per person",
+      days: "days",
+      seatsLeft: "seats left",
+      busLabel: "Bus",
+      enquire: "Enquire",
+    },
+    hotelsPage: {
+      title: "Hotels",
+      note: "Partner hotels and rooms we can book for your trip.",
+      empty: "No hotels published yet. Check back soon, or ask us directly on WhatsApp.",
+      perNight: "per night",
+      roomsLeft: "rooms available",
+      enquire: "Enquire",
+    },
+    fleetEmpty: "Our fleet listing is being updated — contact us directly on WhatsApp or call for current vehicles and rates.",
     contactPage: {
       title: "Contact Us",
       getInTouch: "Get in touch",
@@ -97,12 +129,16 @@ const translations = {
       vehicle: (name, seats) => `Hi TravelSolutions, I'd like to enquire about the ${name} (${seats}).`,
       destination: (name) => `Hi TravelSolutions, I'd like to enquire about a tour package to ${name}.`,
       culture: "Hi TravelSolutions, I'd like to enquire about a cultural tour package.",
+      package: (title) => `Hi TravelSolutions, I'd like to enquire about the "${title}" tour package.`,
+      hotel: (name, room) => `Hi TravelSolutions, I'd like to enquire about ${name} — ${room}.`,
     },
   },
   ml: {
     nav: {
       home: "ഹോം",
       fleet: "വാഹനങ്ങളും നിരക്കും",
+      packages: "പാക്കേജുകൾ",
+      hotels: "ഹോട്ടലുകൾ",
       gallery: "ഗാലറി",
       contact: "ബന്ധപ്പെടുക",
       callNow: "ഇപ്പോൾ വിളിക്കൂ",
@@ -146,9 +182,19 @@ const translations = {
       title: "ഞങ്ങളുടെ വാഹനവ്യൂഹം പ്രവർത്തനത്തിൽ",
     },
     destinations: {
-      kicker: "ടൂർ പാക്കേജുകൾ",
+      kicker: "കേരളം കാണാം",
       title: "ജനപ്രിയ കേരള ലക്ഷ്യസ്ഥാനങ്ങൾ",
       enquire: "അന്വേഷിക്കൂ",
+    },
+    packagesSection: {
+      kicker: "ടൂർ പാക്കേജുകൾ",
+      title: "തിരഞ്ഞെടുത്ത ഹോളിഡേ പാക്കേജുകൾ",
+      viewAll: "എല്ലാ പാക്കേജുകളും കാണൂ",
+    },
+    hotelsSection: {
+      kicker: "ഹോട്ടൽ താമസം",
+      title: "പങ്കാളി ഹോട്ടലുകളും മുറികളും",
+      viewAll: "എല്ലാ ഹോട്ടലുകളും കാണൂ",
     },
     culture: {
       kicker: "യാത്രയ്ക്കപ്പുറം",
@@ -171,8 +217,28 @@ const translations = {
     },
     galleryPage: {
       title: "ഗാലറി",
-      note: "TravelSolutions നൽകുന്ന ബസുകളുടെയും യാത്രകളുടെയും ഒരു മുന്നോടി കാഴ്ച. ഞങ്ങളുടെ വാഹനവ്യൂഹത്തിന്റെയും മുൻ യാത്രകളുടെയും യഥാർത്ഥ ഫോട്ടോകൾ ഉടൻ ഇവയ്ക്ക് പകരം വരും.",
+      note: "TravelSolutions-ന്റെ വാഹനവ്യൂഹം, യാത്രകൾ, ലക്ഷ്യസ്ഥാനങ്ങൾ എന്നിവയുടെ ഒരു കാഴ്ച.",
+      empty: "ഇതുവരെ ഫോട്ടോകൾ ഇല്ല — ഉടൻ വീണ്ടും പരിശോധിക്കൂ.",
     },
+    packagesPage: {
+      title: "ടൂർ പാക്കേജുകൾ",
+      note: "യാത്ര, താമസം, കാഴ്ചകൾ എല്ലാം ക്രമീകരിച്ച ഹോളിഡേ പാക്കേജുകൾ.",
+      empty: "ഇതുവരെ ടൂർ പാക്കേജുകൾ പ്രസിദ്ധീകരിച്ചിട്ടില്ല. ഉടൻ വീണ്ടും പരിശോധിക്കൂ, അല്ലെങ്കിൽ വാട്ട്സ്ആപ്പിൽ നേരിട്ട് ചോദിക്കൂ.",
+      perPerson: "ഒരാൾക്ക്",
+      days: "ദിവസം",
+      seatsLeft: "സീറ്റുകൾ ബാക്കി",
+      busLabel: "ബസ്",
+      enquire: "അന്വേഷിക്കൂ",
+    },
+    hotelsPage: {
+      title: "ഹോട്ടലുകൾ",
+      note: "നിങ്ങളുടെ യാത്രയ്ക്കായി ഞങ്ങൾക്ക് ബുക്ക് ചെയ്യാവുന്ന പങ്കാളി ഹോട്ടലുകളും മുറികളും.",
+      empty: "ഇതുവരെ ഹോട്ടലുകൾ പ്രസിദ്ധീകരിച്ചിട്ടില്ല. ഉടൻ വീണ്ടും പരിശോധിക്കൂ, അല്ലെങ്കിൽ വാട്ട്സ്ആപ്പിൽ നേരിട്ട് ചോദിക്കൂ.",
+      perNight: "ഒരു രാത്രിക്ക്",
+      roomsLeft: "മുറികൾ ലഭ്യം",
+      enquire: "അന്വേഷിക്കൂ",
+    },
+    fleetEmpty: "ഞങ്ങളുടെ വാഹനവ്യൂഹം പട്ടിക പുതുക്കിക്കൊണ്ടിരിക്കുന്നു — നിലവിലെ വാഹനങ്ങൾക്കും നിരക്കുകൾക്കും വാട്ട്സ്ആപ്പിൽ നേരിട്ട് ബന്ധപ്പെടുക അല്ലെങ്കിൽ വിളിക്കുക.",
     contactPage: {
       title: "ബന്ധപ്പെടുക",
       getInTouch: "ബന്ധപ്പെടൂ",
@@ -194,6 +260,8 @@ const translations = {
       vehicle: (name, seats) => `ഹായ് TravelSolutions, ${name} (${seats}) സംബന്ധിച്ച് അന്വേഷിക്കാൻ ആഗ്രഹിക്കുന്നു.`,
       destination: (name) => `ഹായ് TravelSolutions, ${name}-ലേക്കുള്ള ഒരു ടൂർ പാക്കേജ് സംബന്ധിച്ച് അന്വേഷിക്കാൻ ആഗ്രഹിക്കുന്നു.`,
       culture: "ഹായ് TravelSolutions, ഒരു സാംസ്കാരിക ടൂർ പാക്കേജ് സംബന്ധിച്ച് അന്വേഷിക്കാൻ ആഗ്രഹിക്കുന്നു.",
+      package: (title) => `ഹായ് TravelSolutions, "${title}" ടൂർ പാക്കേജ് സംബന്ധിച്ച് അന്വേഷിക്കാൻ ആഗ്രഹിക്കുന്നു.`,
+      hotel: (name, room) => `ഹായ് TravelSolutions, ${name} — ${room} സംബന്ധിച്ച് അന്വേഷിക്കാൻ ആഗ്രഹിക്കുന്നു.`,
     },
   },
 };

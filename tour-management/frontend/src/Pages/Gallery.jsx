@@ -3,11 +3,15 @@ import { Container, Row, Col } from "reactstrap";
 
 import CommonSection from "../Shared/CommonSection";
 import ImageCarousel from "../Component/image-gallery/ImageCarousel";
+import ComingSoon from "../Component/shared/ComingSoon";
+import usePublishedWithMedia from "../hooks/usePublishedWithMedia";
 import "../styles/contact.css";
 import { useLanguage } from "../i18n/LanguageContext";
 
 const Gallery = () => {
   const { t } = useLanguage();
+  const { rows, loading } = usePublishedWithMedia("gallery_items", "gallery");
+  const images = rows.flatMap((row) => row.images);
 
   return (
     <>
@@ -19,7 +23,11 @@ const Gallery = () => {
               <p className="fleet__note">{t.galleryPage.note}</p>
             </Col>
             <Col lg="12" data-aos="fade-up">
-              <ImageCarousel />
+              {!loading && images.length === 0 ? (
+                <ComingSoon title={t.galleryPage.empty} />
+              ) : (
+                <ImageCarousel images={images} />
+              )}
             </Col>
           </Row>
         </Container>
