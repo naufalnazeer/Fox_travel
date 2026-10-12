@@ -85,6 +85,12 @@
   font-size: 0.75rem;
 }
 
+.fleet__minimum-note {
+  font-size: 0.75rem;
+  color: var(--text-color);
+  margin-top: 0.2rem;
+}
+
 .booking__btn {
   background: var(--secondary-color) !important;
   cursor: pointer;

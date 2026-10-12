@@ -110,14 +110,19 @@ create table if not exists public.fleet_vehicles (
   name_ml text not null,
   seats_en text not null,
   seats_ml text not null,
-  regular_rate numeric(10, 2) not null,
-  offer_rate numeric(10, 2),
+  regular_rate numeric(10, 2) not null, -- rate per km
+  offer_rate numeric(10, 2), -- offer rate per km
+  minimum_km numeric(10, 2), -- minimum chargeable distance, e.g. 20 or 30
+  minimum_fare numeric(10, 2), -- flat fare charged for up to minimum_km
   inclusions_en text[] not null default '{}',
   inclusions_ml text[] not null default '{}',
   is_published boolean not null default true,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+alter table public.fleet_vehicles add column if not exists minimum_km numeric(10, 2);
+alter table public.fleet_vehicles add column if not exists minimum_fare numeric(10, 2);
 
 -- ============================================================
 -- 5. Gallery (standalone images not tied to a package/hotel/vehicle)

@@ -107,7 +107,9 @@ export const fleetConfig = {
   pluralLabel: "Fleet (Buses & Mini Travellers)",
   titleOf: (row) => row.name_en || "(untitled)",
   metaOf: (row) =>
-    `${row.seats_en} · ₹${row.offer_rate || row.regular_rate}/day · ${row.vehicle_type}`,
+    `${row.seats_en} · ₹${row.offer_rate || row.regular_rate}/km${
+      row.minimum_km ? ` · Min ${row.minimum_km}km (₹${row.minimum_fare || 0})` : ""
+    } · ${row.vehicle_type}`,
   defaults: {
     vehicle_type: "bus",
     name_en: "",
@@ -116,6 +118,8 @@ export const fleetConfig = {
     seats_ml: "",
     regular_rate: "",
     offer_rate: "",
+    minimum_km: "",
+    minimum_fare: "",
     inclusions_en: [],
     inclusions_ml: [],
     is_published: true,
@@ -136,8 +140,18 @@ export const fleetConfig = {
     { key: "name_ml", label: "Name (Malayalam)", type: "text", required: true },
     { key: "seats_en", label: "Seats (English, e.g. \"20 Seater\")", type: "text", required: true },
     { key: "seats_ml", label: "Seats (Malayalam)", type: "text", required: true },
-    { key: "regular_rate", label: "Regular Rate per day (₹)", type: "number", required: true },
-    { key: "offer_rate", label: "Offer Rate per day (₹, optional)", type: "number" },
+    { key: "regular_rate", label: "Rate per KM (₹)", type: "number", required: true },
+    { key: "offer_rate", label: "Offer Rate per KM (₹, optional)", type: "number" },
+    {
+      key: "minimum_km",
+      label: "Minimum Distance Charged (km, e.g. 20 or 30)",
+      type: "number",
+    },
+    {
+      key: "minimum_fare",
+      label: "Minimum Fare (₹) — flat charge up to the minimum distance",
+      type: "number",
+    },
     { key: "inclusions_en", label: "Features — English (one per line)", type: "stringlist" },
     { key: "inclusions_ml", label: "Features — Malayalam (one per line)", type: "stringlist" },
     { key: "is_published", label: "Published (visible on site)", type: "checkbox" },

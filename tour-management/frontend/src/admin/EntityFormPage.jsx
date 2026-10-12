@@ -63,30 +63,37 @@ const EntityFormPage = ({ config }) => {
     setSaving(true);
     setError("");
 
-    const payload = {};
-    config.fields.forEach((field) => {
-      payload[field.key] = fromFormValue(field, values[field.key] ?? toFormValue(field, undefined));
-    });
+    try {
+      const payload = {};
+      config.fields.forEach((field) => {
+        payload[field.key] = fromFormValue(field, values[field.key] ?? toFormValue(field, undefined));
+      });
 
-    let result;
-    if (isNew) {
-      result = await supabase.from(config.table).insert(payload).select().single();
-    } else {
-      payload.updated_at = new Date().toISOString();
-      result = await supabase.from(config.table).update(payload).eq("id", id).select().single();
-    }
+      let result;
+      if (isNew) {
+        result = await supabase.from(config.table).insert(payload).select().single();
+      } else {
+        payload.updated_at = new Date().toISOString();
+        result = await supabase.from(config.table).update(payload).eq("id", id).select().single();
+      }
 
-    setSaving(false);
+      if (result.error) {
+        setError(result.error.message);
+        return;
+      }
 
-    if (result.error) {
-      setError(result.error.message);
-      return;
-    }
-
-    if (isNew) {
-      navigate(`${config.basePath}/${result.data.id}`, { replace: true });
-    } else {
-      setValues(result.data);
+      if (isNew) {
+        navigate(`${config.basePath}/${result.data.id}`, { replace: true });
+      } else {
+        setValues(result.data);
+      }
+    } catch (err) {
+      // A thrown/rejected request (network hiccup, etc.) instead of a normal
+      // {error} result must still clear `saving` — otherwise the button stays
+      // stuck on "Saving…" forever even though nothing further happened.
+      setError(err.message || "Something went wrong while saving. Please try again.");
+    } finally {
+      setSaving(false);
     }
   };
 

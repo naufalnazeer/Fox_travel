@@ -5,7 +5,7 @@ import { whatsappLink } from "../../data/siteConfig";
 import { useLanguage } from "../../i18n/LanguageContext";
 
 const FleetCard = ({ vehicle }) => {
-  const { name, seats, img, startingPrice, priceUnit, features, popular } = vehicle;
+  const { name, seats, img, startingPrice, priceUnit, minimumNote, features, popular } = vehicle;
   const { lang, t } = useLanguage();
 
   return (
@@ -31,9 +31,12 @@ const FleetCard = ({ vehicle }) => {
           </ul>
 
           <div className="fleet__bottom d-flex align-items-center justify-content-between mt-3">
-            <h5>
-              {startingPrice} <span>{priceUnit[lang]}</span>
-            </h5>
+            <div>
+              <h5 className="mb-0">
+                {startingPrice} <span>{priceUnit[lang]}</span>
+              </h5>
+              {minimumNote && <div className="fleet__minimum-note">{minimumNote[lang]}</div>}
+            </div>
 
             <a
               href={whatsappLink(t.whatsapp.vehicle(name[lang], seats[lang]))}
