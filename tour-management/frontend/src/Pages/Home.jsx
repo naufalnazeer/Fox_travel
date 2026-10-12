@@ -159,7 +159,7 @@ const Home = () => {
                 data-aos-delay={index * 100}
               >
                 <EntityCard
-                  image={pkg.images[0]}
+                  images={pkg.images}
                   badge={pkg.offer_rate ? "Offer" : null}
                   title={lang === "ml" ? pkg.title_ml : pkg.title_en}
                   meta={`${pkg.days} ${t.packagesPage.days} · ${pkg.available_seats} ${t.packagesPage.seatsLeft}`}
@@ -208,7 +208,7 @@ const Home = () => {
                 data-aos-delay={index * 100}
               >
                 <EntityCard
-                  image={room.images[0]}
+                  images={room.images}
                   badge={room.offer_rate ? "Offer" : null}
                   title={`${room.hotel_name} — ${lang === "ml" ? room.room_title_ml : room.room_title_en}`}
                   meta={`${room.available_rooms} ${t.hotelsPage.roomsLeft}`}
