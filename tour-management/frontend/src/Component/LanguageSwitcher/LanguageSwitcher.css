@@ -1,6 +1,7 @@
 .lang__switcher {
   display: flex;
   align-items: center;
+  width: fit-content;
   border: 1px solid var(--secondary-color);
   border-radius: 50px;
   overflow: hidden;
