@@ -152,6 +152,16 @@
   object-fit: cover;
 }
 
+.destination__img--placeholder {
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  font-size: 2.8rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
 .destination__body {
   padding: 1.5rem;
 }
@@ -354,7 +364,8 @@
     justify-content: center;
   }
 
-  .destination__img img {
+  .destination__img img,
+  .destination__img--placeholder {
     height: 200px;
   }
 }

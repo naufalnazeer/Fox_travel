@@ -243,7 +243,7 @@ const Home = () => {
             </Col>
             {destinationsData.map((destination, index) => (
               <Col
-                lg="6"
+                lg="4"
                 md="6"
                 sm="12"
                 className="mb-4"
@@ -252,8 +252,12 @@ const Home = () => {
                 data-aos-delay={index * 100}
               >
                 <div className="destination__card">
-                  <div className="destination__img">
-                    <img src={destination.img} alt={destination.name.en} />
+                  <div className={`destination__img ${destination.img ? "" : "destination__img--placeholder"}`}>
+                    {destination.img ? (
+                      <img src={destination.img} alt={destination.name.en} />
+                    ) : (
+                      <i className="ri-map-pin-2-line"></i>
+                    )}
                   </div>
                   <div className="destination__body">
                     <h4>{destination.name[lang]}</h4>
