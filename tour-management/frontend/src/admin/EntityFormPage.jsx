@@ -89,7 +89,7 @@ const EntityFormPage = ({ config }) => {
       if (isNew) {
         navigate(`${config.basePath}/${result.data.id}`, { replace: true });
       } else {
-        setValues(result.data);
+        navigate(config.basePath);
       }
     } catch (err) {
       // A thrown/rejected request (network hiccup, etc.) instead of a normal
