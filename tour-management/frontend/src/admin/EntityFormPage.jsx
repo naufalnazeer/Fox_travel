@@ -15,7 +15,11 @@ const toFormValue = (field, value) => {
 
 const fromFormValue = (field, value) => {
   if (field.type === "stringlist") {
-    return value
+    // Untouched fields are still the array loaded from the DB (or the
+    // default `[]`) — only a string (from actually editing the textarea)
+    // needs splitting.
+    if (Array.isArray(value)) return value;
+    return (value || "")
       .split("\n")
       .map((line) => line.trim())
       .filter(Boolean);
