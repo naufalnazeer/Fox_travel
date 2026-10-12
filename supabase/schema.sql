@@ -32,10 +32,14 @@ create trigger trg_enforce_admin_limit
 
 alter table public.admins enable row level security;
 
--- Any logged-in admin can see the admin list (needed for a "manage admins" screen later, if ever added).
+-- Each user can see only their own admins row (enough for the app's "am I an
+-- admin?" check on login). Querying the admins table from its own policy
+-- (e.g. "auth.uid() in (select user_id from admins)") causes infinite
+-- recursion in Postgres — this self-only check avoids that entirely.
 drop policy if exists "admins can read admins" on public.admins;
-create policy "admins can read admins" on public.admins
-  for select using (auth.uid() in (select user_id from public.admins));
+drop policy if exists "users can read own admin row" on public.admins;
+create policy "users can read own admin row" on public.admins
+  for select using (auth.uid() = user_id);
 
 -- ============================================================
 -- Helper: is the current user an admin?
