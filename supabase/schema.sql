@@ -71,9 +71,12 @@ create table if not exists public.packages (
   total_seats integer not null default 0,
   available_seats integer not null default 0,
   is_published boolean not null default true,
+  is_cancelled boolean not null default false,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+alter table public.packages add column if not exists is_cancelled boolean not null default false;
 
 -- ============================================================
 -- 3. Hotel rooms
@@ -125,8 +128,11 @@ create table if not exists public.gallery_items (
   caption_ml text,
   category text not null default 'general', -- 'general' | 'package' | 'hotel' | 'fleet'
   is_published boolean not null default true,
-  created_at timestamptz not null default now()
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
 );
+
+alter table public.gallery_items add column if not exists updated_at timestamptz not null default now();
 
 -- ============================================================
 -- 6. Media — every image for every entity above, many-per-entity

@@ -1,14 +1,35 @@
 import React from "react";
+import { tripStatusLabel } from "../../utils/tripStatus";
 import "./EntityCard.css";
 
 const placeholderClass = "entity-card__img--placeholder";
 
-const EntityCard = ({ image, badge, title, meta, description, inclusions, regularRate, offerRate, rateUnit, ctaLabel, ctaHref }) => {
+const EntityCard = ({
+  image,
+  badge,
+  title,
+  meta,
+  description,
+  inclusions,
+  regularRate,
+  offerRate,
+  rateUnit,
+  ctaLabel,
+  ctaHref,
+  status,
+}) => {
+  const isInactive = status && status !== "active";
+  const displayBadge = isInactive ? tripStatusLabel[status] : badge;
+
   return (
-    <div className="entity-card">
+    <div className={`entity-card ${isInactive ? "entity-card--inactive" : ""}`}>
       <div className={`entity-card__img ${image ? "" : placeholderClass}`}>
         {image ? <img src={image} alt={title} /> : <i className="ri-image-2-line"></i>}
-        {badge && <span className="entity-card__badge">{badge}</span>}
+        {displayBadge && (
+          <span className={`entity-card__badge ${isInactive ? `entity-card__badge--${status}` : ""}`}>
+            {displayBadge}
+          </span>
+        )}
       </div>
 
       <div className="entity-card__body">
@@ -38,12 +59,18 @@ const EntityCard = ({ image, badge, title, meta, description, inclusions, regula
             )}
             {rateUnit && <span className="entity-card__price-unit">{rateUnit}</span>}
           </div>
-          {ctaHref && (
-            <a href={ctaHref} target="_blank" rel="noreferrer">
-              <button className="booking__btn">
-                <i className="ri-whatsapp-line"></i> {ctaLabel}
-              </button>
-            </a>
+          {isInactive ? (
+            <button className="booking__btn" disabled>
+              {tripStatusLabel[status]}
+            </button>
+          ) : (
+            ctaHref && (
+              <a href={ctaHref} target="_blank" rel="noreferrer">
+                <button className="booking__btn">
+                  <i className="ri-whatsapp-line"></i> {ctaLabel}
+                </button>
+              </a>
+            )
           )}
         </div>
       </div>

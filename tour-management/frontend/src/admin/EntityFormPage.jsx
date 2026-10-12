@@ -4,7 +4,11 @@ import { supabase } from "../lib/supabaseClient";
 import ImageManager from "./ImageManager";
 
 const toFormValue = (field, value) => {
-  if (field.type === "stringlist") return (value || []).join("\n");
+  if (field.type === "stringlist") {
+    // Loaded/initial values are arrays (joined for display); once the user
+    // types, state holds the raw textarea string instead — pass it through.
+    return Array.isArray(value) ? value.join("\n") : value || "";
+  }
   if (value === null || value === undefined) return field.type === "checkbox" ? false : "";
   return value;
 };

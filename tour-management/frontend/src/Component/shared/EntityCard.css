@@ -14,6 +14,15 @@
   box-shadow: rgba(0, 0, 0, 0.22) 0px 16px 34px -10px;
 }
 
+.entity-card--inactive {
+  opacity: 0.65;
+  filter: grayscale(0.6);
+}
+
+.entity-card--inactive:hover {
+  transform: none;
+}
+
 .entity-card__img {
   position: relative;
   height: 220px;
@@ -44,6 +53,14 @@
   padding: 0.3rem 0.7rem;
   border-radius: 0 0 0 5px;
   font-size: 0.8rem;
+}
+
+.entity-card__badge--completed {
+  background: #546e7a;
+}
+
+.entity-card__badge--cancelled {
+  background: #c62828;
 }
 
 .entity-card__body {

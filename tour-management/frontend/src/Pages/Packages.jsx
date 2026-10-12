@@ -5,6 +5,7 @@ import CommonSection from "../Shared/CommonSection";
 import EntityCard from "../Component/shared/EntityCard";
 import ComingSoon from "../Component/shared/ComingSoon";
 import usePublishedWithMedia from "../hooks/usePublishedWithMedia";
+import { getTripStatus } from "../utils/tripStatus";
 import { whatsappLink } from "../data/siteConfig";
 import "../styles/contact.css";
 import { useLanguage } from "../i18n/LanguageContext";
@@ -42,6 +43,7 @@ const Packages = () => {
                 <EntityCard
                   image={pkg.images[0]}
                   badge={pkg.offer_rate ? "Offer" : null}
+                  status={getTripStatus(pkg)}
                   title={lang === "ml" ? pkg.title_ml : pkg.title_en}
                   meta={`${pkg.days} ${t.packagesPage.days}${
                     pkg.bus_label ? ` · ${t.packagesPage.busLabel}: ${pkg.bus_label}` : ""

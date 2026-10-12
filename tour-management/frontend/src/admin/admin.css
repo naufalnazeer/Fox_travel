@@ -232,6 +232,11 @@
   gap: 1rem;
 }
 
+.admin__card--inactive {
+  opacity: 0.6;
+  filter: grayscale(0.5);
+}
+
 .admin__card-thumb {
   width: 64px;
   height: 64px;
@@ -271,6 +276,21 @@
 .admin__badge-draft {
   background: #fff3e0;
   color: #ef6c00;
+}
+
+.admin__badge-active {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.admin__badge-completed {
+  background: #eceff1;
+  color: #546e7a;
+}
+
+.admin__badge-cancelled {
+  background: #ffebee;
+  color: #c62828;
 }
 
 .admin__card-meta {

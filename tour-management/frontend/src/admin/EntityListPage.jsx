@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
+import { tripStatusLabel } from "../utils/tripStatus";
 
 const EntityListPage = ({ config }) => {
   const [rows, setRows] = useState([]);
@@ -63,6 +64,13 @@ const EntityListPage = ({ config }) => {
     load();
   };
 
+  const canCancel = config.fields.some((f) => f.key === "is_cancelled");
+
+  const toggleCancelled = async (row) => {
+    await supabase.from(config.table).update({ is_cancelled: !row.is_cancelled }).eq("id", row.id);
+    load();
+  };
+
   return (
     <div>
       <div className="admin__toolbar">
@@ -83,47 +91,65 @@ const EntityListPage = ({ config }) => {
       )}
 
       <div className="admin__list">
-        {rows.map((row) => (
-          <div className="admin__card" key={row.id}>
-            {thumbs[row.id] ? (
-              <img className="admin__card-thumb" src={thumbs[row.id]} alt="" />
-            ) : (
-              <div className="admin__card-thumb" />
-            )}
-            <div className="admin__card-body">
-              <div className="admin__card-title">
-                {config.titleOf(row)}
-                <span
-                  className={`admin__badge ${
-                    row.is_published ? "admin__badge-published" : "admin__badge-draft"
-                  }`}
-                >
-                  {row.is_published ? "Published" : "Draft"}
-                </span>
+        {rows.map((row) => {
+          const status = config.statusOf ? config.statusOf(row) : null;
+          return (
+            <div
+              className={`admin__card ${status && status !== "active" ? "admin__card--inactive" : ""}`}
+              key={row.id}
+            >
+              {thumbs[row.id] ? (
+                <img className="admin__card-thumb" src={thumbs[row.id]} alt="" />
+              ) : (
+                <div className="admin__card-thumb" />
+              )}
+              <div className="admin__card-body">
+                <div className="admin__card-title">
+                  {config.titleOf(row)}
+                  <span
+                    className={`admin__badge ${
+                      row.is_published ? "admin__badge-published" : "admin__badge-draft"
+                    }`}
+                  >
+                    {row.is_published ? "Published" : "Draft"}
+                  </span>
+                  {status && (
+                    <span className={`admin__badge admin__badge-${status}`}>{tripStatusLabel[status]}</span>
+                  )}
+                </div>
+                <div className="admin__card-meta">{config.metaOf(row)}</div>
               </div>
-              <div className="admin__card-meta">{config.metaOf(row)}</div>
+              <div className="admin__card-actions">
+                <button
+                  type="button"
+                  className="admin__btn admin__btn-outline admin__btn-sm"
+                  onClick={() => togglePublished(row)}
+                >
+                  {row.is_published ? "Unpublish" : "Publish"}
+                </button>
+                {canCancel && (
+                  <button
+                    type="button"
+                    className="admin__btn admin__btn-outline admin__btn-sm"
+                    onClick={() => toggleCancelled(row)}
+                  >
+                    {row.is_cancelled ? "Reactivate" : "Cancel Trip"}
+                  </button>
+                )}
+                <Link to={`${config.basePath}/${row.id}`} className="admin__btn admin__btn-outline admin__btn-sm">
+                  Edit
+                </Link>
+                <button
+                  type="button"
+                  className="admin__btn admin__btn-danger admin__btn-sm"
+                  onClick={() => handleDelete(row)}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
-            <div className="admin__card-actions">
-              <button
-                type="button"
-                className="admin__btn admin__btn-outline admin__btn-sm"
-                onClick={() => togglePublished(row)}
-              >
-                {row.is_published ? "Unpublish" : "Publish"}
-              </button>
-              <Link to={`${config.basePath}/${row.id}`} className="admin__btn admin__btn-outline admin__btn-sm">
-                Edit
-              </Link>
-              <button
-                type="button"
-                className="admin__btn admin__btn-danger admin__btn-sm"
-                onClick={() => handleDelete(row)}
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

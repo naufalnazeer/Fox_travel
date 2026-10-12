@@ -1,5 +1,6 @@
 // Field/table configuration for each admin-managed content type.
 // EntityListPage / EntityFormPage render generically off these configs.
+import { getTripStatus } from "../utils/tripStatus";
 
 export const packagesConfig = {
   key: "packages",
@@ -13,6 +14,10 @@ export const packagesConfig = {
     `₹${row.offer_rate || row.regular_rate} · ${row.days} day${row.days === 1 ? "" : "s"} · ${
       row.available_seats
     }/${row.total_seats} seats${row.trip_date ? ` · ${row.trip_date}` : ""}`,
+  // Active (upcoming), Completed (trip_date passed), or Cancelled (admin-set) —
+  // used by EntityListPage to badge + gray out cards, and by the public
+  // Packages page to do the same for visitors.
+  statusOf: getTripStatus,
   defaults: {
     title_en: "",
     title_ml: "",
@@ -28,6 +33,7 @@ export const packagesConfig = {
     total_seats: "",
     available_seats: "",
     is_published: true,
+    is_cancelled: false,
   },
   fields: [
     { key: "title_en", label: "Title (English)", type: "text", required: true },
@@ -44,6 +50,7 @@ export const packagesConfig = {
     { key: "total_seats", label: "Total Seats", type: "number", required: true },
     { key: "available_seats", label: "Available Seats", type: "number", required: true },
     { key: "is_published", label: "Published (visible on site)", type: "checkbox" },
+    { key: "is_cancelled", label: "Cancel this trip", type: "checkbox" },
   ],
 };
 
