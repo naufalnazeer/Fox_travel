@@ -442,6 +442,24 @@
   font-size: 0.85rem;
 }
 
+.admin__required-mark {
+  color: #c62828;
+}
+
+.admin__field-error {
+  margin: 0;
+  color: #c62828;
+  font-size: 0.78rem;
+  font-weight: 400;
+}
+
+.admin__form input.admin__input-invalid,
+.admin__form textarea.admin__input-invalid,
+.admin__form select.admin__input-invalid {
+  border-color: #c62828;
+  background: #fff5f5;
+}
+
 .admin__inline-success {
   color: #2e7d32;
   font-size: 0.85rem;

@@ -41,7 +41,7 @@ const Packages = () => {
                 data-aos-delay={index * 100}
               >
                 <EntityCard
-                  image={pkg.images[0]}
+                  images={pkg.images}
                   badge={pkg.offer_rate ? "Offer" : null}
                   status={getTripStatus(pkg)}
                   title={lang === "ml" ? pkg.title_ml : pkg.title_en}

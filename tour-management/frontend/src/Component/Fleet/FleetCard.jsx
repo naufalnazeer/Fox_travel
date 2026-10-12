@@ -1,20 +1,22 @@
 import React from "react";
 import { Card, CardBody } from "reactstrap";
+import CardImageCarousel from "../shared/CardImageCarousel";
 import "./Fleet-card.css";
 import { whatsappLink } from "../../data/siteConfig";
 import { useLanguage } from "../../i18n/LanguageContext";
 
 const FleetCard = ({ vehicle }) => {
-  const { name, seats, img, startingPrice, priceUnit, minimumNote, features, popular } = vehicle;
+  const { name, seats, images, startingPrice, priceUnit, minimumNote, features, popular } = vehicle;
   const { lang, t } = useLanguage();
 
   return (
     <div className="fleet__card">
       <Card>
-        <div className={`fleet__img${img ? "" : " fleet__img--placeholder"}`}>
-          {img ? <img src={img} alt={name[lang]} /> : <i className="ri-bus-2-line"></i>}
+        <div className="fleet__img">
+          <CardImageCarousel images={images} alt={name[lang]} placeholderIcon="ri-bus-2-line" />
           {popular && <span>{t.fleetSection.popular}</span>}
         </div>
+        <div className="card-accent-bar" />
 
         <CardBody>
           <div className="d-flex align-items-center justify-content-between">

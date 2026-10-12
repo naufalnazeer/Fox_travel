@@ -1,11 +1,10 @@
 import React from "react";
 import { tripStatusLabel } from "../../utils/tripStatus";
+import CardImageCarousel from "./CardImageCarousel";
 import "./EntityCard.css";
 
-const placeholderClass = "entity-card__img--placeholder";
-
 const EntityCard = ({
-  image,
+  images,
   badge,
   title,
   meta,
@@ -23,14 +22,15 @@ const EntityCard = ({
 
   return (
     <div className={`entity-card ${isInactive ? "entity-card--inactive" : ""}`}>
-      <div className={`entity-card__img ${image ? "" : placeholderClass}`}>
-        {image ? <img src={image} alt={title} /> : <i className="ri-image-2-line"></i>}
+      <div className="entity-card__img">
+        <CardImageCarousel images={images} alt={title} />
         {displayBadge && (
           <span className={`entity-card__badge ${isInactive ? `entity-card__badge--${status}` : ""}`}>
             {displayBadge}
           </span>
         )}
       </div>
+      <div className="card-accent-bar" />
 
       <div className="entity-card__body">
         <h5 className="entity-card__title">{title}</h5>

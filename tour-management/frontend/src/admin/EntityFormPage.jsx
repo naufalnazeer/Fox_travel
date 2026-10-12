@@ -29,6 +29,15 @@ const fromFormValue = (field, value) => {
   return value;
 };
 
+// A required field counts as empty differently per type — a required number
+// of 0 is a real value, but an empty string/array/null is not.
+const isFieldEmpty = (field, value) => {
+  if (field.type === "checkbox") return false;
+  if (field.type === "number") return value === null || value === undefined;
+  if (field.type === "stringlist") return !Array.isArray(value) || value.length === 0;
+  return value === null || value === undefined || String(value).trim() === "";
+};
+
 const EntityFormPage = ({ config }) => {
   const { id } = useParams();
   const isNew = id === "new";
@@ -38,6 +47,7 @@ const EntityFormPage = ({ config }) => {
   const [loading, setLoading] = useState(!isNew);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState({});
 
   useEffect(() => {
     if (isNew) return;
@@ -60,19 +70,39 @@ const EntityFormPage = ({ config }) => {
 
   const handleChange = (field, raw) => {
     setValues((prev) => ({ ...prev, [field.key]: raw }));
+    setFieldErrors((prev) => {
+      if (!prev[field.key]) return prev;
+      const next = { ...prev };
+      delete next[field.key];
+      return next;
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSaving(true);
     setError("");
 
-    try {
-      const payload = {};
-      config.fields.forEach((field) => {
-        payload[field.key] = fromFormValue(field, values[field.key] ?? toFormValue(field, undefined));
-      });
+    const payload = {};
+    config.fields.forEach((field) => {
+      payload[field.key] = fromFormValue(field, values[field.key] ?? toFormValue(field, undefined));
+    });
 
+    const errors = {};
+    config.fields.forEach((field) => {
+      if (field.required && isFieldEmpty(field, payload[field.key])) {
+        errors[field.key] = `${field.label} is required.`;
+      }
+    });
+
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
+      setError("Please fill in all required fields, highlighted below.");
+      return;
+    }
+    setFieldErrors({});
+    setSaving(true);
+
+    try {
       let result;
       if (isNew) {
         result = await supabase.from(config.table).insert(payload).select().single();
@@ -117,6 +147,8 @@ const EntityFormPage = ({ config }) => {
       <form className="admin__form" onSubmit={handleSubmit}>
         {config.fields.map((field) => {
           const value = toFormValue(field, values[field.key]);
+          const fieldError = fieldErrors[field.key];
+          const invalidClass = fieldError ? "admin__input-invalid" : "";
 
           if (field.type === "checkbox") {
             return (
@@ -127,6 +159,7 @@ const EntityFormPage = ({ config }) => {
                   onChange={(e) => handleChange(field, e.target.checked)}
                 />
                 {field.label}
+                {field.required && <span className="admin__required-mark">*</span>}
               </label>
             );
           }
@@ -134,12 +167,16 @@ const EntityFormPage = ({ config }) => {
           if (field.type === "textarea" || field.type === "stringlist") {
             return (
               <label key={field.key}>
-                {field.label}
+                <span>
+                  {field.label}
+                  {field.required && <span className="admin__required-mark"> *</span>}
+                </span>
                 <textarea
+                  className={invalidClass}
                   value={value}
-                  required={field.required}
                   onChange={(e) => handleChange(field, e.target.value)}
                 />
+                {fieldError && <p className="admin__field-error">{fieldError}</p>}
               </label>
             );
           }
@@ -148,13 +185,15 @@ const EntityFormPage = ({ config }) => {
             return (
               <label key={field.key}>
                 {field.label}
-                <select value={value} onChange={(e) => handleChange(field, e.target.value)}>
+                {field.required && <span className="admin__required-mark">*</span>}
+                <select className={invalidClass} value={value} onChange={(e) => handleChange(field, e.target.value)}>
                   {field.options.map((opt) => (
                     <option key={opt.value} value={opt.value}>
                       {opt.label}
                     </option>
                   ))}
                 </select>
+                {fieldError && <p className="admin__field-error">{fieldError}</p>}
               </label>
             );
           }
@@ -162,12 +201,14 @@ const EntityFormPage = ({ config }) => {
           return (
             <label key={field.key}>
               {field.label}
+              {field.required && <span className="admin__required-mark">*</span>}
               <input
+                className={invalidClass}
                 type={field.type}
                 value={value}
-                required={field.required}
                 onChange={(e) => handleChange(field, e.target.value)}
               />
+              {fieldError && <p className="admin__field-error">{fieldError}</p>}
             </label>
           );
         })}

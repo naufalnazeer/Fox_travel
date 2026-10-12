@@ -1,0 +1,68 @@
+.card-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #111;
+}
+
+.card-carousel--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  color: #bdbdbd;
+  font-size: 2.5rem;
+}
+
+.card-carousel__slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 0.9s ease, transform 6s ease;
+}
+
+.card-carousel__slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+.card-carousel__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 39, 39, 0) 45%, rgba(11, 39, 39, 0.75) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.card-carousel__dots {
+  position: absolute;
+  bottom: 0.6rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.35rem;
+  z-index: 3;
+}
+
+.card-carousel__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.card-carousel__dot.is-active {
+  background: #fff;
+  transform: scale(1.3);
+}

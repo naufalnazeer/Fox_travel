@@ -4,7 +4,7 @@ const mapFleetRow = (row) => ({
   id: row.id,
   name: { en: row.name_en, ml: row.name_ml },
   seats: { en: row.seats_en, ml: row.seats_ml },
-  img: row.images?.[0],
+  images: row.images || [],
   startingPrice: `₹${row.offer_rate || row.regular_rate}`,
   priceUnit: { en: "/ km", ml: "/ കി.മീ" },
   minimumNote:
